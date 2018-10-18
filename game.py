@@ -161,7 +161,7 @@ def execute_go(direction, current):
         global current_room
         current_room = rooms[current["exits"][equivalent]]
     else:
-        return "You cannot go there."
+        return "You cannot go there.\n"
 
 
 def execute_take(item_id1, current):
@@ -171,7 +171,7 @@ def execute_take(item_id1, current):
     if item:
         inventory.append(item)
     else:
-        return "You cannot take that."
+        return "You cannot take that.\n"
 
 
 def execute_drop(item_id1, current):
@@ -180,7 +180,7 @@ def execute_drop(item_id1, current):
     if item:
         current['items'].append(item)
     else:
-        return "You cannot drop that."
+        return "You cannot drop that.\n"
 
 
 def execute_command(command, current):
@@ -191,26 +191,26 @@ def execute_command(command, current):
         if len(command) > 1:
             execute_go(command[1], current)
         else:
-            return "Go where?"
+            return "Go where?\n"
     elif command[0] == "take":
         if len(command) > 1:
             return execute_take(command[1], current)
         else:
-            return "Take what?"
+            return "Take what?\n"
     elif command[0] == "drop":
         if len(command) > 1:
             return execute_drop(command[1], current)
         else:
-            return "Drop what?"
+            return "Drop what?\n"
     elif command[0] == "inspect":
         if len(command) > 1:
             return execute_inspect(command[1])
         else:
-            return "Inspect what?"
+            return "Inspect what?\n"
     elif command[0] == "evidence":
         return execute_evidence()
     else:
-        return "This makes no sense."
+        return "This makes no sense.\n"
 
 
 def menu(exits, room_items, inv_items):
