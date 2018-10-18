@@ -82,5 +82,6 @@ def print_description(room):
             else:
                 char_counter = 0
                 line_counter += 1
+                description_line += char
                 description_line += '\n'
     print(description_line)
