@@ -123,6 +123,18 @@ def equivalent_direction(direction):
         return 'west'
     return direction
 
+def execute_evidence():
+    global evidence
+    if evidence:
+        string_evidence = "Evidence: your evidence includes "
+        item_names = []
+        for item in evidence:
+            item_names.append(item["name"])
+        string_evidence += (", ".join(item_names))
+        string_evidence += (".\n")
+        return string_evidence
+    else:
+        return "Evidence: you don't have any evidence.\n"
 
 def execute_inspect(evidence_name):
     global current_room
@@ -132,6 +144,11 @@ def execute_inspect(evidence_name):
             if evidence_name == evidence_item["name"]:
                 evidence.append(evidence_item)
                 current_room["evidence"].remove(evidence_item)
+                return "Inspect: " + evidence_item["description"] + "\n"
+
+    if evidence:
+        for evidence_item in evidence:
+            if evidence_name == evidence_item["name"]:
                 return "Inspect: " + evidence_item["description"] + "\n"
                 
     return "Inspect: there's nothing to see.\n"
@@ -190,6 +207,8 @@ def execute_command(command, current):
             return execute_inspect(command[1])
         else:
             return "Inspect what?"
+    elif command[0] == "evidence":
+        return execute_evidence()
     else:
         return "This makes no sense."
 
