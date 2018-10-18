@@ -5,7 +5,7 @@ room_reception = {
     "name": "Reception",
 
     "description":
-    """You are in a maze of twisty little passages, all alike. Next to you is the School of Computer Science and Informatics reception. The receptionist, Matt Strangis, seems to be playing an old school text-based adventure game on his computer. There are corridors leading to the south and east. The exit is to the west.""",
+    """You are in a maze of twisty little passages, all alike. Next to you is the School of Computer Science and Informatics reception. The receptionist, Matt Strangis, seems to be playing an old school text-based adventure game on his computer. There are corridors leading to the south and east. The exit is to the west. There is some dough on the side counter, hmm.""",
 
     "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
 
