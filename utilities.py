@@ -4,7 +4,7 @@ import os
 
 def clear_console():
     # Clears the console.
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def generate_minimap(exits, has_a_weapon):
