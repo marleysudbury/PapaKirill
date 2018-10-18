@@ -124,24 +124,37 @@ def equivalent_direction(direction):
     return direction
 
 
+def execute_inspect(evidence_name):
+    global current_room
+    global evidence
+    if current_room["evidence"]:
+        for evidence_item in current_room["evidence"]:
+            if evidence_name == evidence_item["name"]:
+                evidence.append(evidence_item)
+                current_room["evidence"].remove(evidence_item)
+                return "Inspect: " + evidence_item["description"] + "\n"
+                
+    return "Inspect: there's nothing to see.\n"
+            
+
 def execute_go(direction, current):
     # Move player or print error text.
     equivalent = equivalent_direction(direction)
-    if is_valid_exit(current['exits'], equivalent):
+    if is_valid_exit(current["exits"], equivalent):
         global current_room
-        current_room = rooms[current['exits'][equivalent]]
+        current_room = rooms[current["exits"][equivalent]]
     else:
-        print('You cannot go there.')
+        return "You cannot go there."
 
 
 def execute_take(item_id1, current):
     # Take object or print error text.
     item = pop_room_item(item_id1, current['name'])
-    print('we get here')
+    #print('we get here')
     if item:
         inventory.append(item)
     else:
-        print('You cannot take that.')
+        return "You cannot take that."
 
 
 def execute_drop(item_id1, current):
@@ -150,7 +163,7 @@ def execute_drop(item_id1, current):
     if item:
         current['items'].append(item)
     else:
-        print('You cannot drop that.')
+        return "You cannot drop that."
 
 
 def execute_command(command, current):
@@ -161,19 +174,24 @@ def execute_command(command, current):
         if len(command) > 1:
             execute_go(command[1], current)
         else:
-            print("Go where?")
+            return "Go where?"
     elif command[0] == "take":
         if len(command) > 1:
-            execute_take(command[1], current)
+            return execute_take(command[1], current)
         else:
-            print("Take what?")
+            return "Take what?"
     elif command[0] == "drop":
         if len(command) > 1:
-            execute_drop(command[1], current)
+            return execute_drop(command[1], current)
         else:
-            print("Drop what?")
+            return "Drop what?"
+    elif command[0] == "inspect":
+        if len(command) > 1:
+            return execute_inspect(command[1])
+        else:
+            return "Inspect what?"
     else:
-        print("This makes no sense.")
+        return "This makes no sense."
 
 
 def menu(exits, room_items, inv_items):
@@ -187,15 +205,18 @@ def menu(exits, room_items, inv_items):
 # Entry point.
 def main():
     # Main loop.
+    output = ""
     while True:
-        # Render.
         clear_console()
+        # Render.
         print_room(current_room)
         print_inventory_items(inventory)
+        if output: print(output)
         # Input.
         command = menu(current_room["exits"], current_room["items"], inventory)
         # Update.
-        execute_command(command, current_room)
+        output = execute_command(command, current_room)
+
 
 
 # Are we being run as a script? If so, run main().
