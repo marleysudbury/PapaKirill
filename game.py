@@ -4,6 +4,7 @@ from map import *
 from player import *
 from utilities import *
 from gameparser import *
+from combat import *
 
 
 def list_of_items(items):
@@ -123,6 +124,7 @@ def equivalent_direction(direction):
         return 'west'
     return direction
 
+
 def execute_evidence():
     global evidence
     if evidence:
@@ -135,6 +137,7 @@ def execute_evidence():
         return string_evidence
     else:
         return "Evidence: you don't have any evidence.\n"
+
 
 def execute_inspect(evidence_name):
     global current_room
@@ -152,7 +155,7 @@ def execute_inspect(evidence_name):
                 return "Inspect: " + evidence_item["description"] + "\n"
                 
     return "Inspect: there's nothing to see.\n"
-            
+
 
 def execute_go(direction, current):
     # Move player or print error text.
@@ -209,6 +212,8 @@ def execute_command(command, current):
             return "Inspect what?\n"
     elif command[0] == "evidence":
         return execute_evidence()
+    elif command[0] == "exit":
+        return "exit"
     else:
         return "This makes no sense.\n"
 
@@ -225,7 +230,7 @@ def menu(exits, room_items, inv_items):
 def main():
     # Main loop.
     output = ""
-    while True:
+    while output != "exit":
         clear_console()
         # Render.
         print_room(current_room)
@@ -236,6 +241,8 @@ def main():
         # Update.
         output = execute_command(command, current_room)
 
+    print(combat())
+    print("\nThank you for playing Papa Kirill's Pizzeria!\n")
 
 
 # Are we being run as a script? If so, run main().
