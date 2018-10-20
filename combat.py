@@ -1,7 +1,7 @@
 # combat functions
 from utilities import *
 import random
-steps = 0
+global player_steps
 accuracy = 0.00
 
 enemy = {
@@ -14,13 +14,14 @@ enemy = {
 def combat():
     global rounds
     global health_points
+    global accuracy
 
-    if steps > 50:
+    if player_steps > 50:
         accuracy = 0.50
     else:
-        accuracy = steps / 100
+        accuracy = player_steps / 100
 
-    enemy["rounds"] += int(steps / 10)
+    enemy["rounds"] += int(player_steps / 10)
     if enemy["rounds"] > 6: enemy["rounds"] = 6
 
     output = ""
@@ -38,8 +39,8 @@ def combat():
         print("You: 'You son of a bitch!'")
         print("You draw your gun.")
         print("\nPress ENTER to fire at {}.\n".format(enemy["name"]))
-        print("You:\t HP={} Rounds={}/6".format(health_points, rounds))
-        print("{}: HP={} Rounds={}/6\n".format(enemy["name"], enemy["hp"], enemy["rounds"]))
+        print("You:\t HP={}\tRounds={}/6".format(health_points, rounds))
+        print("{}: HP={}\tRounds={}/6\n".format(enemy["name"], enemy["hp"], enemy["rounds"]))
         if output != "": print(output)
         input()
         output = calc_damage()
@@ -56,8 +57,8 @@ def combat():
     print("You: 'You son of a bitch!'")
     print("You draw your gun.")
     print("\nPress ENTER to fire at {}.\n".format(enemy["name"]))
-    print("You:\t HP={} Rounds={}/6".format(health_points, rounds))
-    print("{}: HP={} Rounds={}/6\n".format(enemy["name"], enemy["hp"], enemy["rounds"]))
+    print("You:\t HP={}\tRounds={}/6".format(health_points, rounds))
+    print("{}: HP={}\tRounds={}/6\n".format(enemy["name"], enemy["hp"], enemy["rounds"]))
 
     if health_points <= 0 and enemy["hp"] <= 0:
         return "You have killed each other."
@@ -77,19 +78,21 @@ def calc_damage():
 
     to_return = ""
 
+    damage = random.randrange(20, 60)
     hit = random.random()
     rounds -= 1
     if hit > accuracy:
-        enemy["hp"] -= 30
-        to_return += "You hit for 30!\n"
+        enemy["hp"] -= damage
+        to_return += "You hit for {}!\n".format(damage)
     else:
         to_return += "You missed!\n"
 
+    damage = random.randrange(20, 60)
     hit = random.random()
     enemy["rounds"] -= 1
     if hit > 0.5:
-        health_points -= 30
-        to_return += "{} hit for 30!\n".format(enemy["name"])
+        health_points -= damage
+        to_return += "{} hit for {}!\n".format(enemy["name"], damage)
     else:
         to_return += "{} missed!\n".format(enemy["name"])
 

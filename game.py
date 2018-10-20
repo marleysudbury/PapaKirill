@@ -214,6 +214,8 @@ def execute_command(command, current):
         return execute_evidence()
     elif command[0] == "exit":
         return "exit"
+    elif command[0] == "ending":
+        return "ending"
     else:
         return "This makes no sense.\n"
 
@@ -230,7 +232,7 @@ def menu(exits, room_items, inv_items):
 def main():
     # Main loop.
     output = ""
-    while output != "exit":
+    while output != "exit" and output != "ending":
         clear_console()
         # Render.
         print_room(current_room)
@@ -241,7 +243,8 @@ def main():
         # Update.
         output = execute_command(command, current_room)
 
-    print(combat())
+    if output == "ending":
+        print(combat())
     print("\nThank you for playing Papa Kirill's Pizzeria!\n")
 
 
