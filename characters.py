@@ -102,7 +102,6 @@ person_cop ={
         "text3": "",
         "text4": ""
     }
-
 }
 
 characters = {
