@@ -91,6 +91,8 @@ def print_room_item(item):
     print(s)
 
 
+
+
 def exit_leads_to(exits, direction):
     # Returns the name of the room into which an exit leads.
     return rooms[exits[direction]]["name"]
