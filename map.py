@@ -1,5 +1,6 @@
 from items import *
 from evidence import *
+from characters import *
 
 room_reception = {
     "name": "Reception",
@@ -11,7 +12,7 @@ room_reception = {
 
     "items": [item_biscuits, item_handbook],
 
-    "people": [item_biscuits, item_handbook],
+    "people": [person_barman], #added barman so i can test in reception, he will be moved later on
 
     "evidence": [evidence_dough]
 }
@@ -62,6 +63,8 @@ room_office = {
     """You are standing next to the cashier's till at 30-36 Newport Road. The cashier looks at you with hope in their eyes. If you go west you can return to the Queen's Buildings.""",
 
     "exits": {"west": "Parking"},
+
+    "people": [person_cop],
 
     "items": [item_pen, item_revolver],
 

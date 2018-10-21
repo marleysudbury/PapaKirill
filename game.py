@@ -4,6 +4,7 @@ from map import *
 from player import *
 from utilities import *
 from gameparser import *
+from characters import *
 
 
 def list_of_items(items):
@@ -17,6 +18,14 @@ def list_of_items(items):
             result += ', '
     return result
 
+def print_people(current_room):
+    #Prints people in room
+    s = "TALK"
+    s += " to "
+    s += str(current_room["people"])
+    s += current_room.upper
+    print(s)
+    #Pretty sure this is wrong, confused myself
 
 def print_room_items(room):
     # Prints items in a room.
@@ -123,6 +132,9 @@ def equivalent_direction(direction):
         return 'west'
     return direction
 
+def execute_talkto():
+
+    return
 def execute_evidence():
     global evidence
     if evidence:
@@ -228,6 +240,7 @@ def main():
     while True:
         clear_console()
         # Render.
+        print_people(current_room["people"])
         print_room(current_room)
         print_inventory_items(inventory)
         if output: print(output)
