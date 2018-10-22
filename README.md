@@ -1,7 +1,7 @@
 # Papa Kirill's Pizzeria
 
 ## Computational Thinking Module Project (Team 1)
-Daisy, Dan, Dheer, James, Joe, Marley, William
+Abdullah, Daisy, Dan, Dheer, James, Joe, Marley, William
 
 #### Instructions for running:
 
