@@ -9,7 +9,7 @@ room_reception = {
 
     "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
 
-    "items": [item_biscuits, item_handbook],
+    "items": [item_biscuits, item_handbook, item_round],
 
     "people": [item_biscuits, item_handbook],
 
@@ -24,7 +24,7 @@ room_admins = {
 
     "exits":  {"north": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "evidence": []
 }
@@ -37,7 +37,7 @@ room_tutor = {
 
     "exits": {"west": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "evidence": []
 }
@@ -50,7 +50,7 @@ room_parking = {
 
     "exits": {"east": "Office", "south": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "evidence": []
 }
@@ -63,7 +63,7 @@ room_office = {
 
     "exits": {"west": "Parking"},
 
-    "items": [item_pen, item_revolver],
+    "items": [item_pen, item_revolver, item_round],
 
     "evidence": []
 }

@@ -4,7 +4,7 @@ from map import *
 from player import *
 from utilities import *
 from gameparser import *
-from combat import *
+import combat
 
 
 def list_of_items(items):
@@ -170,8 +170,12 @@ def execute_go(direction, current):
 def execute_take(item_id1, current):
     # Take object or print error text.
     item = pop_room_item(item_id1, current['name'])
-    #print('we get here')
-    if item:
+    global rounds
+    global health_points
+    health_points = 50
+    if item == item_round:
+        rounds += 1
+    elif item:
         inventory.append(item)
     else:
         return "You cannot take that.\n"
@@ -244,7 +248,7 @@ def main():
         output = execute_command(command, current_room)
 
     if output == "ending":
-        print(combat())
+        print(combat.combat(rounds, health_points, player_steps))
     print("\nThank you for playing Papa Kirill's Pizzeria!\n")
 
 

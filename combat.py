@@ -1,7 +1,7 @@
 # combat functions
-from utilities import *
+import utilities
 import random
-global player_steps
+
 accuracy = 0.00
 
 enemy = {
@@ -11,9 +11,7 @@ enemy = {
 }
 
 
-def combat():
-    global rounds
-    global health_points
+def combat(rounds, health_points, player_steps):
     global accuracy
 
     if player_steps > 50:
@@ -22,12 +20,13 @@ def combat():
         accuracy = player_steps / 100
 
     enemy["rounds"] += int(player_steps / 10)
-    if enemy["rounds"] > 6: enemy["rounds"] = 6
+    if enemy["rounds"] > 6:
+        enemy["rounds"] = 6
 
     output = ""
 
     while health_points > 0 and enemy["hp"] > 0 and rounds > 0 and enemy["rounds"] > 0:
-        clear_console()
+        utilities.clear_console()
         print("  ____                  ____        _   _   _      ")
         print(" |  _ \                |  _ \      | | | | | |     ")
         print(" | |_) | ___  ___ ___  | |_) | __ _| |_| |_| | ___ ")
@@ -41,11 +40,12 @@ def combat():
         print("\nPress ENTER to fire at {}.\n".format(enemy["name"]))
         print("You:\t HP={}\tRounds={}/6".format(health_points, rounds))
         print("{}: HP={}\tRounds={}/6\n".format(enemy["name"], enemy["hp"], enemy["rounds"]))
-        if output != "": print(output)
+        if output != "":
+            print(output)
         input()
-        output = calc_damage()
+        output = calc_damage(rounds, health_points)
 
-    clear_console()
+    utilities.clear_console()
     print("   _____                         ____                 ")
     print("  / ____|                       / __ \                ")
     print(" | |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ ")
@@ -72,15 +72,13 @@ def combat():
         return "{} runs out of rounds and flees. He's caught by police officers who were lurking around the corner.".format(enemy["name"])
 
 
-def calc_damage():
-    global rounds
-    global health_points
-
+def calc_damage(rounds1, health_points1):
+    # Quick time event to shoot bad guy!
     to_return = ""
 
     damage = random.randrange(20, 60)
     hit = random.random()
-    rounds -= 1
+    rounds1 -= 1
     if hit > accuracy:
         enemy["hp"] -= damage
         to_return += "You hit for {}!\n".format(damage)
@@ -91,12 +89,14 @@ def calc_damage():
     hit = random.random()
     enemy["rounds"] -= 1
     if hit > 0.5:
-        health_points -= damage
+        health_points1 -= damage
         to_return += "{} hit for {}!\n".format(enemy["name"], damage)
     else:
         to_return += "{} missed!\n".format(enemy["name"])
 
-    if health_points < 0: health_points = 0
-    if enemy["hp"] < 0: enemy["hp"] = 0
+    if health_points1 < 0:
+        health_points1 = 0
+    if enemy["hp"] < 0:
+        enemy["hp"] = 0
 
     return to_return
