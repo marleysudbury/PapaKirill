@@ -40,7 +40,7 @@ def print_inventory_items(items):
         count -= 1
         result += (str(item['name']))
         if count > 0:
-             result += ', '
+            result += ', '
     result += '.\n'
     print(result)
 

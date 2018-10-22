@@ -1,6 +1,7 @@
 # combat functions
 import utilities
 import random
+import time
 
 accuracy = 0.00
 
@@ -100,3 +101,12 @@ def calc_damage(rounds1, health_points1):
         enemy["hp"] = 0
 
     return to_return
+
+
+def quick_time():
+    start_time = time.time()
+    usr_input = ""
+    while usr_input != "\n":
+        utilities.clear_console()
+        print(100.00 - (start_time - time.time()))
+    return
