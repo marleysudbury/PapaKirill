@@ -4,6 +4,7 @@ from map import *
 from player import *
 from utilities import *
 from gameparser import *
+from items import *
 
 
 def list_of_items(items):
@@ -54,16 +55,18 @@ def print_inventory_item(item):
     print(s)
 
 
-def print_status_bar(hp, r, s):
+def print_status_bar():
     # Prints the status bar.
-    status = "HP: [{0}/100]   ROUNDS: [{1}/6]   STEPS: [{2}]"
-    status_bar = status.format(str(hp), str(r), str(s))
+    global health_points, rounds, player_steps, inventory
+    round_count = '   ROUNDS: [{0}/6]'.format(str(rounds)) if item_revolver in inventory else (' ' * 13)
+    status = "STEPS: [{2}]   HP: [{0}/100]{1}"
+    status_bar = status.format(str(health_points), str(round_count), str(player_steps))
     print(status_bar)
 
 
 def print_room(room):
     # Prints room information.
-    print_status_bar(health_points, rounds, player_steps)
+    print_status_bar()
     print('')
     print(room["name"].upper())
     print('')
@@ -124,7 +127,8 @@ def equivalent_direction(direction):
     return direction
 
 
-def execute_inspect(evidence_name):
+def execute_inspect(evidence_name, current):
+    # Inspect an object if it exists.
     global current_room
     global evidence
     if current_room["evidence"]:
@@ -143,6 +147,8 @@ def execute_go(direction, current):
     if is_valid_exit(current["exits"], equivalent):
         global current_room
         current_room = rooms[current["exits"][equivalent]]
+        global player_steps
+        player_steps += 1
     else:
         return "You cannot go there."
 
@@ -150,7 +156,6 @@ def execute_go(direction, current):
 def execute_take(item_id1, current):
     # Take object or print error text.
     item = pop_room_item(item_id1, current['name'])
-    #print('we get here')
     if item:
         inventory.append(item)
     else:
@@ -187,7 +192,7 @@ def execute_command(command, current):
             return "Drop what?"
     elif command[0] == "inspect":
         if len(command) > 1:
-            return execute_inspect(command[1])
+            return execute_inspect(command[1], current)
         else:
             return "Inspect what?"
     else:
@@ -216,7 +221,6 @@ def main():
         command = menu(current_room["exits"], current_room["items"], inventory)
         # Update.
         output = execute_command(command, current_room)
-
 
 
 # Are we being run as a script? If so, run main().
