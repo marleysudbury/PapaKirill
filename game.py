@@ -159,14 +159,13 @@ def execute_evidence():
         return "Evidence: you don't have any evidence.\n"
 
 
-def execute_inspect(evidence_name):
-    global current_room
+def execute_inspect(evidence_name, current):
     global evidence
-    if current_room["evidence"]:
-        for evidence_item in current_room["evidence"]:
+    if current["evidence"]:
+        for evidence_item in current["evidence"]:
             if evidence_name == evidence_item["name"]:
                 evidence.append(evidence_item)
-                current_room["evidence"].remove(evidence_item)
+                current["evidence"].remove(evidence_item)
                 return "Inspect: " + evidence_item["description"] + "\n"
 
     if evidence:
@@ -200,7 +199,7 @@ def execute_take(item_id1, current):
 
 def execute_toggle(c):
     if c == 'menu':
-        return settings.toggle_menu()
+        settings.toggle_menu()
 
 
 def execute_drop(item_id1, current):
@@ -220,7 +219,7 @@ def execute_command(command, current):
         if len(command) > 1:
             return execute_toggle(command[1])
         else:
-            return "Go where?\n"
+            return "Toggle what?\n"
     elif command[0] == "go":
         if len(command) > 1:
             execute_go(command[1], current)
