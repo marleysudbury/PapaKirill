@@ -18,14 +18,15 @@ def list_of_items(items):
             result += ', '
     return result
 
-def print_people(current_room):
-    #Prints people in room
+
+def print_people(character):
+    # Prints people in room
     s = "TALK"
     s += " to "
-    s += str(current_room["people"])
-    s += current_room.upper
+    s += str(character["name"])
     print(s)
-    #Pretty sure this is wrong, confused myself
+    # Pretty sure this is wrong, confused myself
+
 
 def print_room_items(room):
     # Prints items in a room.
@@ -91,8 +92,6 @@ def print_room_item(item):
     print(s)
 
 
-
-
 def exit_leads_to(exits, direction):
     # Returns the name of the room into which an exit leads.
     return rooms[exits[direction]]["name"]
@@ -105,7 +104,7 @@ def print_exit(direction, leads_to):
     print("GO " + direction_equivalent + " to " + leads_to + ".")
 
 
-def print_menu(exits, room_items, inv_items):
+def print_menu(exits, room_items, inv_items, room_characters):
     # Prints a list of exits and items triggers.
     print("You can:")
     for direction in exits:
@@ -114,6 +113,8 @@ def print_menu(exits, room_items, inv_items):
         print_room_item(item)
     for item in inv_items:
         print_inventory_item(item)
+    for character in room_characters:
+        print_people(character)
     print("What do you want to do?")
 
 
@@ -134,9 +135,12 @@ def equivalent_direction(direction):
         return 'west'
     return direction
 
+
 def execute_talkto():
 
     return
+
+
 def execute_evidence():
     global evidence
     if evidence:
@@ -149,6 +153,7 @@ def execute_evidence():
         return string_evidence
     else:
         return "Evidence: you don't have any evidence.\n"
+
 
 def execute_inspect(evidence_name):
     global current_room
@@ -181,7 +186,7 @@ def execute_go(direction, current):
 def execute_take(item_id1, current):
     # Take object or print error text.
     item = pop_room_item(item_id1, current['name'])
-    #print('we get here')
+    # print('we get here')
     if item:
         inventory.append(item)
     else:
@@ -227,9 +232,9 @@ def execute_command(command, current):
         return "This makes no sense.\n"
 
 
-def menu(exits, room_items, inv_items):
+def menu(exits, room_items, inv_items, room_characters):
     # Prints menu and accepts input.
-    print_menu(exits, room_items, inv_items)
+    print_menu(exits, room_items, inv_items, room_characters)
     user_input = input("> ")
     normalised_user_input = normalise_input(user_input)
     return normalised_user_input
@@ -242,15 +247,15 @@ def main():
     while True:
         clear_console()
         # Render.
-        print_people(current_room["people"])
+        """print_people(current_room["people"])"""
         print_room(current_room)
         print_inventory_items(inventory)
-        if output: print(output)
+        if output:
+            print(output)
         # Input.
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = menu(current_room["exits"], current_room["items"], inventory, current_room["people"])
         # Update.
         output = execute_command(command, current_room)
-
 
 
 # Are we being run as a script? If so, run main().

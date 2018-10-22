@@ -27,6 +27,8 @@ room_admins = {
 
     "items": [],
 
+    "people": [],
+
     "evidence": []
 }
 
@@ -40,6 +42,8 @@ room_tutor = {
 
     "items": [],
 
+    "people": [],
+
     "evidence": []
 }
 
@@ -52,6 +56,8 @@ room_parking = {
     "exits": {"east": "Office", "south": "Reception"},
 
     "items": [],
+
+    "people": [],
 
     "evidence": []
 }
@@ -78,8 +84,6 @@ rooms = {
     "Parking": room_parking,
     "Office": room_office
 }
-
-
 
 
 def pop_room_item(identity, name):
