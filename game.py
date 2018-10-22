@@ -6,6 +6,7 @@ from utilities import *
 from gameparser import *
 from items import *
 from characters import *
+import settings
 
 
 def list_of_items(items):
@@ -197,6 +198,11 @@ def execute_take(item_id1, current):
         return "You cannot take that.\n"
 
 
+def execute_toggle(c):
+    if c == 'menu':
+        return settings.toggle_menu()
+
+
 def execute_drop(item_id1, current):
     # Drop object or print error text.
     item = pop_inventory_item(item_id1)
@@ -210,7 +216,12 @@ def execute_command(command, current):
     # Executes command.
     if 0 == len(command):
         return
-    if command[0] == "go":
+    if command[0] == "toggle":
+        if len(command) > 1:
+            return execute_toggle(command[1])
+        else:
+            return "Go where?\n"
+    elif command[0] == "go":
         if len(command) > 1:
             execute_go(command[1], current)
         else:
@@ -238,7 +249,8 @@ def execute_command(command, current):
 
 def menu(exits, room_items, inv_items, room_characters):
     # Prints menu and accepts input.
-    print_menu(exits, room_items, inv_items, room_characters)
+    if settings.menu_should_show:
+        print_menu(exits, room_items, inv_items, room_characters)
     user_input = input("> ")
     normalised_user_input = normalise_input(user_input)
     return normalised_user_input
