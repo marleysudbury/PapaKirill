@@ -5,6 +5,7 @@ from player import *
 from utilities import *
 from gameparser import *
 from items import *
+from characters import *
 
 
 def list_of_items(items):
@@ -17,6 +18,15 @@ def list_of_items(items):
         if count > 0:
             result += ', '
     return result
+
+
+def print_people(character):
+    # Prints people in room
+    s = "TALK"
+    s += " to "
+    s += str(character["name"])
+    print(s)
+    # Pretty sure this is wrong, confused myself
 
 
 def print_room_items(room):
@@ -97,7 +107,7 @@ def print_exit(direction, leads_to):
     print("GO " + direction_equivalent + " to " + leads_to + ".")
 
 
-def print_menu(exits, room_items, inv_items):
+def print_menu(exits, room_items, inv_items, room_characters):
     # Prints a list of exits and items triggers.
     print("You can:")
     for direction in exits:
@@ -106,6 +116,8 @@ def print_menu(exits, room_items, inv_items):
         print_room_item(item)
     for item in inv_items:
         print_inventory_item(item)
+    for character in room_characters:
+        print_people(character)
     print("What do you want to do?")
 
 
@@ -127,8 +139,26 @@ def equivalent_direction(direction):
     return direction
 
 
-def execute_inspect(evidence_name, current):
-    # Inspect an object if it exists.
+def execute_talkto():
+
+    return
+
+
+def execute_evidence():
+    global evidence
+    if evidence:
+        string_evidence = "Evidence: your evidence includes "
+        item_names = []
+        for item in evidence:
+            item_names.append(item["name"])
+        string_evidence += (", ".join(item_names))
+        string_evidence += (".\n")
+        return string_evidence
+    else:
+        return "Evidence: you don't have any evidence.\n"
+
+
+def execute_inspect(evidence_name):
     global current_room
     global evidence
     if current_room["evidence"]:
@@ -136,6 +166,11 @@ def execute_inspect(evidence_name, current):
             if evidence_name == evidence_item["name"]:
                 evidence.append(evidence_item)
                 current_room["evidence"].remove(evidence_item)
+                return "Inspect: " + evidence_item["description"] + "\n"
+
+    if evidence:
+        for evidence_item in evidence:
+            if evidence_name == evidence_item["name"]:
                 return "Inspect: " + evidence_item["description"] + "\n"
                 
     return "Inspect: there's nothing to see.\n"
@@ -150,7 +185,7 @@ def execute_go(direction, current):
         global player_steps
         player_steps += 1
     else:
-        return "You cannot go there."
+        return "You cannot go there.\n"
 
 
 def execute_take(item_id1, current):
@@ -159,7 +194,7 @@ def execute_take(item_id1, current):
     if item:
         inventory.append(item)
     else:
-        return "You cannot take that."
+        return "You cannot take that.\n"
 
 
 def execute_drop(item_id1, current):
@@ -168,7 +203,7 @@ def execute_drop(item_id1, current):
     if item:
         current['items'].append(item)
     else:
-        return "You cannot drop that."
+        return "You cannot drop that.\n"
 
 
 def execute_command(command, current):
@@ -179,29 +214,31 @@ def execute_command(command, current):
         if len(command) > 1:
             execute_go(command[1], current)
         else:
-            return "Go where?"
+            return "Go where?\n"
     elif command[0] == "take":
         if len(command) > 1:
             return execute_take(command[1], current)
         else:
-            return "Take what?"
+            return "Take what?\n"
     elif command[0] == "drop":
         if len(command) > 1:
             return execute_drop(command[1], current)
         else:
-            return "Drop what?"
+            return "Drop what?\n"
     elif command[0] == "inspect":
         if len(command) > 1:
             return execute_inspect(command[1], current)
         else:
-            return "Inspect what?"
+            return "Inspect what?\n"
+    elif command[0] == "evidence":
+        return execute_evidence()
     else:
-        return "This makes no sense."
+        return "This makes no sense.\n"
 
 
-def menu(exits, room_items, inv_items):
+def menu(exits, room_items, inv_items, room_characters):
     # Prints menu and accepts input.
-    print_menu(exits, room_items, inv_items)
+    print_menu(exits, room_items, inv_items, room_characters)
     user_input = input("> ")
     normalised_user_input = normalise_input(user_input)
     return normalised_user_input
@@ -214,11 +251,13 @@ def main():
     while True:
         clear_console()
         # Render.
+        """print_people(current_room["people"])"""
         print_room(current_room)
         print_inventory_items(inventory)
-        if output: print(output)
+        if output:
+            print(output)
         # Input.
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = menu(current_room["exits"], current_room["items"], inventory, current_room["people"])
         # Update.
         output = execute_command(command, current_room)
 
