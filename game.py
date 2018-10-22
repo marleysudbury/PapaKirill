@@ -249,7 +249,8 @@ def main():
 
     if output == "ending":
         print(combat.combat(rounds, health_points, player_steps))
-    print("\nThank you for playing Papa Kirill's Pizzeria!\n")
+    print("\nThank you for playing Papa Kirill's Pizzeria!")
+    print("Developed with love by Team 1 ^_^")
 
 
 # Are we being run as a script? If so, run main().
