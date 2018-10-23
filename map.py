@@ -10,13 +10,13 @@ room_pizzeria = [{
 
 Firstly, you examine the body:
 
-Under a cooking apron, your uncle is wearing a blood-stained white tuxedo with a black bow tIe. Six stab wounds are on his back.  Beside the corpse is a table. On this table sits Papa Kirill’s chef’s hat. Curiously, there is still dough on the table and there is a hand mark in the middle of it, that’s a big hand! You should take a picture of any evidence.
+Under a cooking apron, your uncle is wearing a blood-stained white tuxedo with a black bow tie. Six stab wounds are on his back. Beside the corpse is a table. On this table sits Papa Kirill’s chef’s hat. Curiously, there is still dough on the table and there is a hand mark in the middle of it, that’s a big hand! You should inspect it.
 
 After examining your uncle's corpse you get a sense that this murder was very personal. Your uncle might not be the virtuous innocent man you thought he was. 
 
 Under the table, you notice the edge of a purple piece of paper.
 
-The evidence left in the restaurant was very minor, you need to look elsewhere. The Car Park and Delivery Station is to the west and the Alleyway is to the east. You might need to check them both out to really get a sense of what went wrong the night of the 21rst of July 1956.""",
+The evidence left in the restaurant was very minor, you need to look elsewhere. The Car Park and Delivery Station is to the west and the Alleyway is to the east. You might need to check them both out to really get a sense of what went wrong the night of the 21st of July 1956.""",
 
     "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
@@ -74,9 +74,9 @@ room_parking = [{
     "name": "Car Park and Delivery Station",
 
     "description": """You are in the Car Park and Delivery Station. Here is where customers would park their cars to eat in the restaurant. This is also where delivery bikes would leave to bring food directly to the customers' houses. You notice a big tire mark left on the concrete road. No delivery bike could make such an imprint. You can tell it came from a car but which one remains a mystery. I should ask Christine.
-    
+
 Oh, there's a bullet on the floor.
-    
+
 You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
@@ -93,7 +93,7 @@ You look around but find no other clues. To the south is a bar. To the east is t
     "name": "Car Park and Delivery Station",
 
     "description": """The tire mark is still on the floor. The weird guy that was at Andy's Jazz Club jumps into the Alleyway.
-    
+
 Nothing else to see here.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
@@ -152,7 +152,7 @@ room_jazzclub = [{
     "name": "Andy's Jazz Club",
 
     "description": """The Jazz Club is closed.
-    
+
 Oh, another bullet is on the floor.""",
 
     "exits": {"north": "Car Park and Delivery Station"},
@@ -212,7 +212,7 @@ room_policestation = [{
     "description": """You are in the CPD. A lady is at the reception. 
     
     'Hello there,' she said, 'take a seat we'll take care of you soon'.
-    
+
 You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
     "exits": {"north": "Alleyway"},
@@ -227,7 +227,7 @@ You see Bob Smith behind a window working on something on his computer. The clos
     "name": "Chicago Police Department",
 
     "description": """You enter the CPD and the reception lady makes you sit down to wait.
-    
+
 Bob Smith enters the room.""",
 
     "exits": {"north": "Alleyway"},
@@ -242,9 +242,9 @@ Bob Smith enters the room.""",
     "name": "Chicago Police Department",
 
     "description": """You are in the CPD. The same lady is at the reception. 
-    
+
 'Hello there,' she said, 'take a seat we'll take care of you soon'.
-    
+
 You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
     "exits": {"north": "Alleyway"},
@@ -275,13 +275,13 @@ room_sewers = [{
     "name": "Sewers",
 
     "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils.
-    
+
 Behind you is the ladder you used to come down. You cannot go back up as someone closed the manhole.
-    
+
 On your right is a poster of Kirill on a bear.
-    
+
 As you walk towards it you feel something under your feet. A bunch of feces covers it.
-    
+
 You put your hands in the sewer and find a knife""",
 
     "exits": {"up": "Papa Kirill's"},
@@ -296,7 +296,7 @@ You put your hands in the sewer and find a knife""",
     "name": "Sewers",
 
     "description": """It smells horrible down here. If you stay too long you might get a headache.
-    
+
 You can only go back up to Papa Kirill's""",
 
     "exits": {"up": "Papa Kirill's"},
@@ -311,7 +311,7 @@ You can only go back up to Papa Kirill's""",
     "name": "Sewers",
 
     "description": """It smells horrible down here. If you stay too long you might get a headache.
-    
+
 You can only go back up to Papa Kirill's""",
 
     "exits": {"up": "Papa Kirill's"},
@@ -342,7 +342,7 @@ room_alleyway = [{
     "name": "Alleyway",
 
     "description": """You are in the Alleyway. The shady guy that was in the corner of Andy's Jazz Club is no where to be seen even though you saw him pop in the Alleyway.
-    
+
 Walking down the Alleyway you almost trip over a drunk person that was lying there.""",
 
     "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department", "down": "Sewers"},
