@@ -73,7 +73,9 @@ room_pizzeria = [{
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
-    "items": [],
+    "items": [item_round],
+
+    "people": [],
 
     "evidence": [],
 
@@ -90,7 +92,9 @@ room_pizzeria = [{
 
     "exits": {"west": "Parking", "east": "Alleyway", "down": "Sewers"},
 
-    "items": [],
+    "items": [item_round],
+
+    "people": [],
 
     "evidence": [],
 
@@ -135,7 +139,9 @@ room_parking = [{
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "items": [],
+    "items": [item_round],
+
+    "people": [],
 
     "evidence": [],
 
@@ -475,6 +481,7 @@ room_alleyway = [{
     }
 ]
 
+    "items": [item_biscuits, item_handbook, item_round],
 
 rooms = {
     "Papa Kirill's": room_pizzeria,
@@ -484,8 +491,6 @@ rooms = {
     "Sewers": room_sewers,
     "Alleyway": room_alleyway,
 }
-
-
 
 
 def pop_room_item(identity, name):

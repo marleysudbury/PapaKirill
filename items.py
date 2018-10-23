@@ -58,4 +58,12 @@ item_revolver = {
     "description": "It feels weighty in your hand."
 }
 
-item_list = [item_id, item_laptop, item_money, item_biscuits, item_pen, item_handbook, item_revolver]
+item_round = {
+    "id": "round",
+
+    "name": "a round",
+
+    "description": "This bullet fits into a revolver."
+}
+
+item_list = [item_id, item_laptop, item_money, item_biscuits, item_pen, item_handbook, item_revolver, item_round]
