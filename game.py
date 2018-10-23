@@ -5,6 +5,7 @@ from player import *
 from utilities import *
 from gameparser import *
 import combat
+import dancing
 from items import *
 from characters import *
 import settings
@@ -283,7 +284,10 @@ def main():
         output = execute_command(command, current_room)
 
     if output == "ending":
-        print(combat.combat(rounds, health_points, player_steps))
+        if input("1 or 2?: ") == "1":
+            print(combat.combat(rounds, health_points, player_steps))
+        else:
+            print(dancing.combat(rounds, health_points, player_steps))
     print("\nThank you for playing Papa Kirill's Pizzeria!")
     print("Developed with love by Team 1 ^_^")
 
