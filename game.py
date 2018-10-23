@@ -188,15 +188,15 @@ def execute_inspect(evidence_name, current):
     global evidence
     if current["evidence"]:
         for evidence_item in current["evidence"]:
-            if evidence_name == evidence_item["name"]:
+            if evidence_name == evidence_item["id"]:
                 evidence.append(evidence_item)
                 current["evidence"].remove(evidence_item)
-                return "Inspect: " + evidence_item["description"] + "\n"
+                return "Inspect " + evidence_item["name"].lower() + ": " + evidence_item["description"] + "\n"
 
     if evidence:
         for evidence_item in evidence:
-            if evidence_name == evidence_item["name"]:
-                return "Inspect: " + evidence_item["description"] + "\n"
+            if evidence_name == evidence_item["id"]:
+                return "Inspect " + evidence_item["name"].lower() + ": " + evidence_item["description"] + "\n"
 
     return "Inspect: there's nothing to see.\n"
 

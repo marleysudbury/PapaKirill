@@ -91,7 +91,7 @@ def print_description(room):
             while (word_counter < len(new_desc) -1) and len(new_line) + len(new_desc[word_counter]) + 1 < line_length:
                 if "\n\n" in new_desc[word_counter]:
                     two_words = new_desc[word_counter].split("\n\n")
-                    print(two_words)
+                    # print(two_words)
                     new_line += two_words[0]
                     word_counter += 1
                     # print("BREAKING")
