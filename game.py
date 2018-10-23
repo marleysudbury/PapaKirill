@@ -31,7 +31,7 @@ def equivalent_commands(given, commands):
             equivalents[first_letter] = command
     if given in equivalents:
         return equivalents[given]
-    elif given in command:
+    elif given in commands:
         return given
 
 
@@ -169,7 +169,7 @@ def execute_talkto():
 
     return
 
-  
+
 def execute_evidence():
     global evidence
     if evidence:
@@ -197,7 +197,7 @@ def execute_inspect(evidence_name, current):
         for evidence_item in evidence:
             if evidence_name == evidence_item["name"]:
                 return "Inspect: " + evidence_item["description"] + "\n"
-                
+
     return "Inspect: there's nothing to see.\n"
 
 
@@ -211,7 +211,7 @@ def execute_go(direction, current):
         global player_steps
         player_steps += 1
     else:
-        return "You cannot go there.\n"
+        return "You cannot go '{0}'.\n".format(direction)
 
 
 def execute_take(item_id1, current):
@@ -225,7 +225,7 @@ def execute_take(item_id1, current):
     elif item:
         inventory.append(item)
     else:
-        return "You cannot take that.\n"
+        return "You cannot take '{0}'.\n".format(item_id1)
 
 
 def execute_toggle(c):
@@ -239,7 +239,7 @@ def execute_drop(item_id1, current):
     if item:
         current['items'].append(item)
     else:
-        return "You cannot drop that.\n"
+        return "You cannot drop '{0}'.\n".format(item_id1)
 
 
 def execute_command(command, current):
@@ -314,9 +314,9 @@ def main():
     print("\nThank you for playing Papa Kirill's Pizzeria!")
     print("Developed with love by Team 1 ^_^")
 
+
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
     main()
-
