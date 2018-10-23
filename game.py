@@ -31,8 +31,8 @@ def equivalent_commands(given, commands):
             equivalents[first_letter] = command
     if given in equivalents:
         return equivalents[given]
-    else:
-        return ' '
+    elif given in command:
+        return given
 
 
 def list_of_items(items):
