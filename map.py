@@ -16,8 +16,7 @@ After examining your uncle's corpse you get a sense that this murder was very pe
 
 Under the table, you notice the edge of a purple piece of paper.
 
-The evidence left in the restaurant was very minor, you need to look elsewhere. The Car Park and Delivery Station is to the west and the Alleyway is to the east. You might need to check them both out to really get a sense of what went wrong the night of the 21rst of July 1956.
-    """,
+The evidence left in the restaurant was very minor, you need to look elsewhere. The Car Park and Delivery Station is to the west and the Alleyway is to the east. You might need to check them both out to really get a sense of what went wrong the night of the 21rst of July 1956.""",
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
@@ -31,9 +30,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
     {
     "name": "Papa Kirill's",
 
-    "description": """You are in the restaurant, Papa Kirill's corpse is still on the floor in the kitchen.
-    
-    There's a bullet on the floor.""",
+    "description": """You are in the restaurant, Papa Kirill's corpse is still on the floor in the kitchen. There's a bullet on the floor.""",
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
@@ -46,10 +43,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
     {
     "name": "Papa Kirill's",
 
-    "description": """
-    You come out of the sewers through a secret hatch.
-    In the kitchen is a man in a police uniform checking
-    out your uncle's cadaver.""",
+    "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform checking out your uncle's cadaver.""",
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
@@ -64,11 +58,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
     {
     "name": "Papa Kirill's",
 
-    "description": """The fake cop is standing in the kitchen. However
-    he is not wearing his uniform anymore, he is wearing a hat, tight
-    trousers, a jacket and a bow tie with a cigar in his mouth. He's 
-    staring at you as he cleans the barrel of his gun.
-    """,
+    "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
 
     "exits": {"west": "Parking", "east": "Alleyway", "down": "Sewers"},
 
@@ -85,9 +75,9 @@ room_parking = [{
 
     "description": """You are in the Car Park and Delivery Station. Here is where customers would park their cars to eat in the restaurant. This is also where delivery bikes would leave to bring food directly to the customers' houses. You notice a big tire mark left on the concrete road. No delivery bike could make such an imprint. You can tell it came from a car but which one remains a mystery. I should ask Christine.
     
-    Oh, there's a bullet on the floor.
+Oh, there's a bullet on the floor.
     
-    You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
+You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
@@ -102,12 +92,9 @@ room_parking = [{
 
     "name": "Car Park and Delivery Station",
 
-    "description": """
-    The tire mark is still on the floor.
-    The weird guy that was at Andy's Jazz Club
-    jumps into the Alleyway.
+    "description": """The tire mark is still on the floor. The weird guy that was at Andy's Jazz Club jumps into the Alleyway.
     
-    Nothing else to see here.""",
+Nothing else to see here.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
@@ -122,10 +109,7 @@ room_parking = [{
     {
     "name": "Car Park and Delivery Station",
 
-    "description": """
-    The tire mark is still on the floor.
-    Nothing special to notice here apart from another bullet.
-    """,
+    "description": """The tire mark is still on the floor. Nothing special to notice here apart from another bullet.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
@@ -138,10 +122,7 @@ room_parking = [{
     {
     "name": "Car Park and Delivery Station",
 
-    "description": """
-    The tire mark is still on the floor.
-    Nothing special to notice here.
-    """,
+    "description": """The tire mark is still on the floor. Nothing special to notice here.""",
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
@@ -155,13 +136,7 @@ room_parking = [{
 room_jazzclub = [{
     "name": "Andy's Jazz Club",
 
-    "description": """
-    You are in Andy's Jazz Club.
-    Christine should be playing soon. The bar is in front
-    of you and the stage is on the right. All the tables
-    are placed around the stage.
-    
-    """,
+    "description": """You are in Andy's Jazz Club. Christine should be playing soon. The bar is in front of you and the stage is on the right. All the tables are placed around the stage.""",
 
     "exits": {"north": "Car Park and Delivery Station"},
 
@@ -178,7 +153,7 @@ room_jazzclub = [{
 
     "description": """The Jazz Club is closed.
     
-    Oh, another bullet is on the floor.""",
+Oh, another bullet is on the floor.""",
 
     "exits": {"north": "Car Park and Delivery Station"},
 
@@ -206,9 +181,7 @@ room_jazzclub = [{
 
     "name": "Andy's Jazz Club",
 
-    "description": """
-    You are in Andy's Jazz Club. Hand in hand you walk
-    towards the dance floor with Octavio Ricca.""",
+    "description": """You are in Andy's Jazz Club. Hand in hand you walk towards the dance floor with Octavio Ricca.""",
 
     "exits": {"north": "Car Park and Delivery Station"},
 
@@ -223,10 +196,7 @@ room_jazzclub = [{
 room_policestation = [{
     "name": "Chicago Police Department",
 
-    "description": """
-    You are in the CPD. There are too many people in the 
-    waiting room. It's useless to stay here any longer.
-    """,
+    "description": """You are in the CPD. There are too many people in the waiting room. It's useless to stay here any longer.""",
 
     "exits": {"north": "Alleyway"},
 
@@ -239,18 +209,11 @@ room_policestation = [{
     {
     "name": "Chicago Police Department",
 
-    "description": """
-    You are in the CPD. A lady is at the reception. 
+    "description": """You are in the CPD. A lady is at the reception. 
     
-    'Hello there,' she said, 'take a seat we'll take
-    care of you soon'. 
+    'Hello there,' she said, 'take a seat we'll take care of you soon'.
     
-    You see Bob Smith behind a window working on something
-    on his computer. The closer you look at him the more you 
-    think that he's playing some sort of FPS because his 
-    left hand is pretty still and his right hand moves 
-    vigorously across the table.
-    """,
+You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
     "exits": {"north": "Alleyway"},
 
@@ -263,12 +226,9 @@ room_policestation = [{
     {
     "name": "Chicago Police Department",
 
-    "description": """
-    You enter the CPD and the reception lady makes
-    you sit down to wait.
+    "description": """You enter the CPD and the reception lady makes you sit down to wait.
     
-    Bob Smith enters the room.
-    """,
+Bob Smith enters the room.""",
 
     "exits": {"north": "Alleyway"},
 
@@ -281,18 +241,11 @@ room_policestation = [{
     {
     "name": "Chicago Police Department",
 
-    "description": """
-    You are in the CPD. The same lady is at the reception. 
+    "description": """You are in the CPD. The same lady is at the reception. 
     
-    'Hello there,' she said, 'take a seat we'll take
-    care of you soon'. 
+'Hello there,' she said, 'take a seat we'll take care of you soon'.
     
-    You see Bob Smith behind a window working on something
-    on his computer. The closer you look at him the more you 
-    think that he's playing some sort of FPS because his 
-    left hand is pretty still and his right hand moves 
-    vigorously across the table. 
-    """,
+You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
     "exits": {"north": "Alleyway"},
 
@@ -307,9 +260,7 @@ room_policestation = [{
 room_sewers = [{
     "name": "Sewers",
 
-    "description": """
-    You found a bug in the system.
-    You should not be here.""",
+    "description": """You found a bug in the system. You should not be here.""",
 
     "exits": {"up": "Papa Kirill's"},
 
@@ -323,19 +274,15 @@ room_sewers = [{
 
     "name": "Sewers",
 
-    "description": """
-    You are in the Sewers. Around you is a lot
-    of human waste which stings your nostrils.
+    "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils.
     
-    Behind you is the ladder you used to come down.
-    You cannot go back up as someone closed the manhole.
+Behind you is the ladder you used to come down. You cannot go back up as someone closed the manhole.
     
-    On your right is a poster of Kirill on a bear.
+On your right is a poster of Kirill on a bear.
     
-    As you walk towards it you feel something under your
-    feet. A bunch of feces covers it.
+As you walk towards it you feel something under your feet. A bunch of feces covers it.
     
-    You put your hands in the sewer and find a knife""",
+You put your hands in the sewer and find a knife""",
 
     "exits": {"up": "Papa Kirill's"},
 
@@ -348,12 +295,9 @@ room_sewers = [{
     {
     "name": "Sewers",
 
-    "description": """
-    It smells horrible down here. If you stay too long
-    you might get a headache.
+    "description": """It smells horrible down here. If you stay too long you might get a headache.
     
-    You can only go back up to Papa Kirill's
-    """,
+You can only go back up to Papa Kirill's""",
 
     "exits": {"up": "Papa Kirill's"},
 
@@ -366,12 +310,9 @@ room_sewers = [{
     {
     "name": "Sewers",
 
-    "description": """
-    It smells horrible down here. If you stay too long
-    you might get a headache.
+    "description": """It smells horrible down here. If you stay too long you might get a headache.
     
-    You can only go back up to Papa Kirill's
-    """,
+You can only go back up to Papa Kirill's""",
 
     "exits": {"up": "Papa Kirill's"},
 
@@ -386,10 +327,7 @@ room_sewers = [{
 room_alleyway = [{
     "name": "Alleyway",
 
-    "description": """
-    You are in the Alleyway. Do not spend too much time here
-    or you might get snatched up by someone.
-    .""",
+    "description": """You are in the Alleyway. Do not spend too much time here or you might get snatched up by someone.""",
 
     "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department"},
 
@@ -403,13 +341,9 @@ room_alleyway = [{
 
     "name": "Alleyway",
 
-    "description": """
-    You are in the Alleyway. The shady guy that was in the corner 
-    of Andy's Jazz Club is no where to be seen even though you saw
-    him pop in the Alleyway.
+    "description": """You are in the Alleyway. The shady guy that was in the corner of Andy's Jazz Club is no where to be seen even though you saw him pop in the Alleyway.
     
-    Walking down the Alleyway you almost trip over a drunk person 
-    that was lying there.""",
+Walking down the Alleyway you almost trip over a drunk person that was lying there.""",
 
     "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department", "down": "Sewers"},
 
@@ -423,9 +357,7 @@ room_alleyway = [{
 
         "name": "Alleyway",
 
-        "description": """
-        The drunk man's body is still on the side where you 
-        left him. The manhole is slightly open.""",
+        "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
 
         "exits": {"south": "Chicago Police Department", "west": "Papa Kirill's", "down": "Sewers"},
 
@@ -439,10 +371,7 @@ room_alleyway = [{
 
         "name": "Alleyway",
 
-        "description": """
-        The drunk man's body is still on the side where you 
-        left him. The manhole is slightly open.
-        """,
+        "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
 
         "exits": {},
 
