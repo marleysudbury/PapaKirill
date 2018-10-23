@@ -112,4 +112,3 @@ characters = {
     "Bob": person_cop,
 }
 
-print(person_barman["dialog"]["text1"])
