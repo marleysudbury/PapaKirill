@@ -1,5 +1,6 @@
 from items import *
 from evidence import *
+from characters import *
 
 room_reception = {
     "name": "Reception",
@@ -11,7 +12,7 @@ room_reception = {
 
     "items": [item_biscuits, item_handbook, item_round],
 
-    "people": [item_biscuits, item_handbook],
+    "people": [person_barman], #added barman so i can test in reception, he will be moved later on
 
     "evidence": [evidence_dough]
 }
@@ -26,6 +27,8 @@ room_admins = {
 
     "items": [item_round],
 
+    "people": [],
+
     "evidence": []
 }
 
@@ -38,6 +41,8 @@ room_tutor = {
     "exits": {"west": "Reception"},
 
     "items": [item_round],
+
+    "people": [],
 
     "evidence": []
 }
@@ -52,6 +57,8 @@ room_parking = {
 
     "items": [item_round],
 
+    "people": [],
+
     "evidence": []
 }
 
@@ -64,6 +71,8 @@ room_office = {
     "exits": {"west": "Parking"},
 
     "items": [item_pen, item_revolver, item_round],
+
+    "people": [person_cop],
 
     "evidence": []
 }

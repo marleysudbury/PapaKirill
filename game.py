@@ -5,6 +5,9 @@ from player import *
 from utilities import *
 from gameparser import *
 import combat
+from items import *
+from characters import *
+import settings
 
 
 def list_of_items(items):
@@ -17,6 +20,15 @@ def list_of_items(items):
         if count > 0:
             result += ', '
     return result
+
+
+def print_people(character):
+    # Prints people in room
+    s = "TALK"
+    s += " to "
+    s += str(character["name"])
+    print(s)
+    # Pretty sure this is wrong, confused myself
 
 
 def print_room_items(room):
@@ -55,16 +67,18 @@ def print_inventory_item(item):
     print(s)
 
 
-def print_status_bar(hp, r, s):
+def print_status_bar():
     # Prints the status bar.
-    status = "HP: [{0}/100]   ROUNDS: [{1}/6]   STEPS: [{2}]"
-    status_bar = status.format(str(hp), str(r), str(s))
+    global health_points, rounds, player_steps, inventory
+    round_count = '   ROUNDS: [{0}/6]'.format(str(rounds)) if item_revolver in inventory else (' ' * 13)
+    status = "STEPS: [{2}]   HP: [{0}/100]{1}"
+    status_bar = status.format(str(health_points), str(round_count), str(player_steps))
     print(status_bar)
 
 
 def print_room(room):
     # Prints room information.
-    print_status_bar(health_points, rounds, player_steps)
+    print_status_bar()
     print('')
     print(room["name"].upper())
     print('')
@@ -95,7 +109,7 @@ def print_exit(direction, leads_to):
     print("GO " + direction_equivalent + " to " + leads_to + ".")
 
 
-def print_menu(exits, room_items, inv_items):
+def print_menu(exits, room_items, inv_items, room_characters):
     # Prints a list of exits and items triggers.
     print("You can:")
     for direction in exits:
@@ -104,6 +118,8 @@ def print_menu(exits, room_items, inv_items):
         print_room_item(item)
     for item in inv_items:
         print_inventory_item(item)
+    for character in room_characters:
+        print_people(character)
     print("What do you want to do?")
 
 
@@ -125,6 +141,11 @@ def equivalent_direction(direction):
     return direction
 
 
+def execute_talkto():
+
+    return
+
+  
 def execute_evidence():
     global evidence
     if evidence:
@@ -139,14 +160,13 @@ def execute_evidence():
         return "Evidence: you don't have any evidence.\n"
 
 
-def execute_inspect(evidence_name):
-    global current_room
+def execute_inspect(evidence_name, current):
     global evidence
-    if current_room["evidence"]:
-        for evidence_item in current_room["evidence"]:
+    if current["evidence"]:
+        for evidence_item in current["evidence"]:
             if evidence_name == evidence_item["name"]:
                 evidence.append(evidence_item)
-                current_room["evidence"].remove(evidence_item)
+                current["evidence"].remove(evidence_item)
                 return "Inspect: " + evidence_item["description"] + "\n"
 
     if evidence:
@@ -163,6 +183,8 @@ def execute_go(direction, current):
     if is_valid_exit(current["exits"], equivalent):
         global current_room
         current_room = rooms[current["exits"][equivalent]]
+        global player_steps
+        player_steps += 1
     else:
         return "You cannot go there.\n"
 
@@ -181,6 +203,11 @@ def execute_take(item_id1, current):
         return "You cannot take that.\n"
 
 
+def execute_toggle(c):
+    if c == 'menu':
+        settings.toggle_menu()
+
+
 def execute_drop(item_id1, current):
     # Drop object or print error text.
     item = pop_inventory_item(item_id1)
@@ -194,7 +221,12 @@ def execute_command(command, current):
     # Executes command.
     if 0 == len(command):
         return
-    if command[0] == "go":
+    if command[0] == "toggle":
+        if len(command) > 1:
+            return execute_toggle(command[1])
+        else:
+            return "Toggle what?\n"
+    elif command[0] == "go":
         if len(command) > 1:
             execute_go(command[1], current)
         else:
@@ -211,7 +243,7 @@ def execute_command(command, current):
             return "Drop what?\n"
     elif command[0] == "inspect":
         if len(command) > 1:
-            return execute_inspect(command[1])
+            return execute_inspect(command[1], current)
         else:
             return "Inspect what?\n"
     elif command[0] == "evidence":
@@ -224,9 +256,10 @@ def execute_command(command, current):
         return "This makes no sense.\n"
 
 
-def menu(exits, room_items, inv_items):
+def menu(exits, room_items, inv_items, room_characters):
     # Prints menu and accepts input.
-    print_menu(exits, room_items, inv_items)
+    if settings.menu_should_show:
+        print_menu(exits, room_items, inv_items, room_characters)
     user_input = input("> ")
     normalised_user_input = normalise_input(user_input)
     return normalised_user_input
@@ -239,11 +272,13 @@ def main():
     while output != "exit" and output != "ending":
         clear_console()
         # Render.
+        """print_people(current_room["people"])"""
         print_room(current_room)
         print_inventory_items(inventory)
-        if output: print(output)
+        if output:
+            print(output)
         # Input.
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = menu(current_room["exits"], current_room["items"], inventory, current_room["people"])
         # Update.
         output = execute_command(command, current_room)
 
@@ -251,7 +286,6 @@ def main():
         print(combat.combat(rounds, health_points, player_steps))
     print("\nThank you for playing Papa Kirill's Pizzeria!")
     print("Developed with love by Team 1 ^_^")
-
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
