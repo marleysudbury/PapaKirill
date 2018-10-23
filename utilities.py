@@ -72,7 +72,7 @@ def print_description(room):
     word_counter = 0
     new_desc = description.split(' ')
     two_words = [False, False]
-    while word_counter < len(new_desc) - 1:
+    while word_counter < len(new_desc)-1:
         new_line = ""
         if two_words[1]:
             new_line += "\n"
@@ -88,7 +88,7 @@ def print_description(room):
                 new_line += " "
             new_line += minimap_lines[line_counter]
         else:
-            while (word_counter < len(new_desc) -1) and len(new_line) + len(new_desc[word_counter]) + 1 < line_length:
+            while (word_counter < len(new_desc)) and len(new_line) + len(new_desc[word_counter]) + 1 < line_length:
                 if "\n\n" in new_desc[word_counter]:
                     two_words = new_desc[word_counter].split("\n\n")
                     # print(two_words)
