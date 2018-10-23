@@ -10,7 +10,7 @@ room_reception = {
 
     "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
 
-    "items": [item_biscuits, item_handbook],
+    "items": [item_biscuits, item_handbook, item_round],
 
     "people": [person_barman], #added barman so i can test in reception, he will be moved later on
 
@@ -25,7 +25,7 @@ room_admins = {
 
     "exits":  {"north": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "people": [],
 
@@ -40,7 +40,7 @@ room_tutor = {
 
     "exits": {"west": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "people": [],
 
@@ -55,7 +55,7 @@ room_parking = {
 
     "exits": {"east": "Office", "south": "Reception"},
 
-    "items": [],
+    "items": [item_round],
 
     "people": [],
 
@@ -70,9 +70,9 @@ room_office = {
 
     "exits": {"west": "Parking"},
 
-    "people": [person_cop],
+    "items": [item_pen, item_revolver, item_round],
 
-    "items": [item_pen, item_revolver],
+    "people": [person_cop],
 
     "evidence": []
 }

@@ -4,14 +4,13 @@ from map import rooms
 # Player properties.
 inventory = [item_id, item_laptop, item_money]
 evidence = []
-rounds = 5
+rounds = 0
 health_points = 100
 player_steps = 0
 current_room = rooms["Reception"]
 
+
 # Player methods.
-
-
 def pop_inventory_item(identity):
     index = 0
     for item in inventory:

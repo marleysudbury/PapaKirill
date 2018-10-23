@@ -4,6 +4,7 @@ from map import *
 from player import *
 from utilities import *
 from gameparser import *
+import combat
 from items import *
 from characters import *
 import settings
@@ -51,7 +52,7 @@ def print_inventory_items(items):
         count -= 1
         result += (str(item['name']))
         if count > 0:
-             result += ', '
+            result += ', '
     result += '.\n'
     print(result)
 
@@ -144,7 +145,7 @@ def execute_talkto():
 
     return
 
-
+  
 def execute_evidence():
     global evidence
     if evidence:
@@ -174,7 +175,7 @@ def execute_inspect(evidence_name, current):
                 return "Inspect: " + evidence_item["description"] + "\n"
                 
     return "Inspect: there's nothing to see.\n"
-            
+
 
 def execute_go(direction, current):
     # Move player or print error text.
@@ -191,7 +192,12 @@ def execute_go(direction, current):
 def execute_take(item_id1, current):
     # Take object or print error text.
     item = pop_room_item(item_id1, current['name'])
-    if item:
+    global rounds
+    global health_points
+    health_points = 50
+    if item == item_round:
+        rounds += 1
+    elif item:
         inventory.append(item)
     else:
         return "You cannot take that.\n"
@@ -242,6 +248,10 @@ def execute_command(command, current):
             return "Inspect what?\n"
     elif command[0] == "evidence":
         return execute_evidence()
+    elif command[0] == "exit":
+        return "exit"
+    elif command[0] == "ending":
+        return "ending"
     else:
         return "This makes no sense.\n"
 
@@ -259,7 +269,7 @@ def menu(exits, room_items, inv_items, room_characters):
 def main():
     # Main loop.
     output = ""
-    while True:
+    while output != "exit" and output != "ending":
         clear_console()
         # Render.
         """print_people(current_room["people"])"""
@@ -272,6 +282,10 @@ def main():
         # Update.
         output = execute_command(command, current_room)
 
+    if output == "ending":
+        print(combat.combat(rounds, health_points, player_steps))
+    print("\nThank you for playing Papa Kirill's Pizzeria!")
+    print("Developed with love by Team 1 ^_^")
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
