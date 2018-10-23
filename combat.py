@@ -21,6 +21,7 @@ def combat(rounds1, health_points1, player_steps):
     rounds = 6
     global health_points
     health_points = health_points1
+    player_steps = 50
 
     if player_steps > 50:
         enemy["accuracy"] -= 0.50
