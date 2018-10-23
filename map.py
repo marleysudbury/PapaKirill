@@ -138,7 +138,7 @@ room_jazzclub = [{
 
     "description": """You are in Andy's Jazz Club. Christine should be playing soon. The bar is in front of you and the stage is on the right. All the tables are placed around the stage.""",
 
-    "exits": {"north": "Car Park and Delivery Station"},
+    "exits": {"north": "Parking"},
 
     "items": [],
 
@@ -155,7 +155,7 @@ room_jazzclub = [{
     
 Oh, another bullet is on the floor.""",
 
-    "exits": {"north": "Car Park and Delivery Station"},
+    "exits": {"north": "Parking"},
 
     "items": [item_bullet],
 
@@ -169,7 +169,7 @@ Oh, another bullet is on the floor.""",
 
     "description": """The Jazz Club is closed""",
 
-    "exits": {"north": "Car Park and Delivery Station"},
+    "exits": {"north": "Parking"},
 
     "items": [],
 
@@ -183,7 +183,7 @@ Oh, another bullet is on the floor.""",
 
     "description": """You are in Andy's Jazz Club. Hand in hand you walk towards the dance floor with Octavio Ricca.""",
 
-    "exits": {"north": "Car Park and Delivery Station"},
+    "exits": {"north": "Parking"},
 
     "items": [],
 
