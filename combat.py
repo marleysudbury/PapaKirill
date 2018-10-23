@@ -72,15 +72,77 @@ def combat(rounds1, health_points1, player_steps):
     print(output)
 
     if health_points <= 0 and enemy["hp"] <= 0:
-        return "You have killed each other."
+        return """
+        You have neutralized each other and while you are both on the 
+        floor breathing your last breaths Octavio Ricca tells you 
+        that he is not the killer.
+
+        In those last moments, you remember about the dough you 
+        picked up at the beginning of the game. If you've inspected
+        the dough you would know that the hand mark came from someone
+        with very large hands. This hand mark didn't match Papa Kirill's 
+        or any of the apprentices' hands in the restaurant. You look at 
+        Octavio's hands, they are average size.
+
+        "Then why?..." you say before dying.
+
+        You have completed the game but failed. Try again."""
     elif health_points <= 0:
-        return "You were killed by {}.".format(enemy["name"])
+        return """
+        You were killed by Octavio Ricca.
+        You are dying. As you die your vision gets very blurry. 
+        Your uncle appears in front of you.
+
+        "You have disgraced our family by failing to avenge 
+        me!" screamed Papa Kirill. "I hope that you go to hell!"
+
+        Octavio Ricca will continue to live on. During the fight, 
+        he has lost both of his arms. This injury will prevent him
+        from causing any other disasters.
+
+        Congratulations! You are a failure in the eyes of Papa Kirill."""
     elif enemy["hp"] <= 0:
-        return "You have killed {}. Papa Kirill is avenged.".format(enemy["name"])
+        return """
+        You have just killed Octavio Ricca. 
+
+        A rush of adrenaline still rushes through your veins. You walk
+        towards Octavio Ricca and spit at his cadaver. You crouch and
+        look at his corpse. Every limb is very still. His hands are still
+        wrapped around the pistol which lay next to his face. You notice 
+        how small they are. 
+
+        This is very weird. When you investigated the pizzeria at the 
+        very start you had found some dough which served as evidence 
+        that the killer had big hands. It doesn't make sense.
+
+        If Octavio Ricca is not the killer, then who is?
+
+        Congratulations you have completed the game."""
     elif rounds == 0 and enemy["rounds"] > 0:
-        return "You ran out of rounds. {} notices this and approaches, before shooting you through the head.".format(enemy["name"])
+        return """
+        You ran out of rounds. Octavio Ricca notices this and approaches,
+        before shooting you through the head.
+        
+        You were killed by Octavio Ricca.
+        You are dying. As you die your vision gets very blurry. 
+        Your uncle appears in front of you.
+
+        "You have disgraced our family by failing to avenge 
+        me!" screamed Papa Kirill. "I hope that you go to hell!"
+
+        Octavio Ricca will continue to live on. During the fight, 
+        he has lost both of his arms. This injury will prevent him
+        from causing any other disasters.
+
+        Congratulations! You are a failure in the eyes of Papa Kirill."""
     else:  # enemy["rounds"] == 0:
-        return "{} runs out of rounds and flees. He's caught by police officers who were lurking around the corner.".format(enemy["name"])
+        return """
+        Octavio Ricca runs out of rounds and flees. He's caught by Bob Smith
+        who was lurking around the corner. After going through the judicial
+        system he is put into a penitentiary in Alaska where he daily picks up
+        soap for all of the boys.
+        
+        Congratulations! You have completed the game."""
 
 
 def calc_damage(accuracy):

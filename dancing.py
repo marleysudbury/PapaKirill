@@ -72,13 +72,117 @@ def combat(rounds1, health_points1, player_steps):
     print(output)
 
     if health_points <= 0 and enemy["hp"] <= 0:
-        return "You have tied with each other."
+        return """
+        You have tied with each other. 
+        
+        After the dance, you hug it out. Octavio Ricca invites you to a pub
+        for a drink. You accept and follow him to the Green Tavern.
+        
+        While you are at the pub you learn from Octavio Ricca that Papa 
+        Kirill was a very bad man who would deal drugs all around Illinois. 
+        His murder was not an act of revenge or hatred but a way of protecting
+        thousands of people. Indeed, not only did Papa Kirill deal the drugs
+        but he also made them in his underground lab; therefore when customers
+        weren't satisfied with the product Papa Kirill was afraid that they 
+        would talk badly about his merchandise and his solution was murder. 
+        He would change the drug to become lethal on injection. 
+        
+        This information was very hard to digest and you ask the waitress
+        for a bottle of vodka. You spend the rest of the night talking about
+        your exploits around the world.
+        
+        A few months later you announce publicly that you are retiring
+        from being an international detective. The media goes crazy and
+        you get a lot of attention for many weeks. 
+        
+        You are now running your uncle's restaurant with Octavio Ricca 
+        as your right-hand man. You are now lovers and are going to get
+        engaged secretly.
+        
+        Congratulations! You have finished the game."""
     elif health_points <= 0:
-        return "You were out-danced by {}.".format(enemy["name"])
+        return """You were out-danced by Octavio Ricca.
+        After the dance, you hug it out. Octavio Ricca invites you to a pub
+        for a drink. You accept and follow him to the Green Tavern.
+        
+        While you are at the pub you learn from Octavio Ricca that Papa 
+        Kirill was a very bad man who would deal drugs all around Illinois. 
+        His murder was not an act of revenge or hatred but a way of protecting
+        thousands of people. Indeed, not only did Papa Kirill deal the drugs
+        but he also made them in his underground lab; therefore when customers
+        weren't satisfied with the product Papa Kirill was afraid that they 
+        would talk badly about his merchandise and his solution was murder. 
+        He would change the drug to become lethal on injection. 
+        
+        This information was very hard to digest and you ask the waitress
+        for a bottle of vodka. You spend the rest of the night talking about
+        your exploits around the world.
+        
+        A few months later you announce publicly that you are retiring
+        from being an international detective. The media goes crazy and
+        you get a lot of attention for many weeks. 
+        
+        You are now running your uncle's restaurant with Octavio Ricca 
+        as your right-hand man. You are now lovers and are going to get
+        engaged secretly.
+        
+        Congratulations! You have finished the game."""
     elif enemy["hp"] <= 0:
-        return "You have out-danced {}. Papa Kirill is avenged.".format(enemy["name"])
+        return """You have out-danced Octavio Ricca.
+        After the dance, you hug it out. Octavio Ricca invites you to a pub
+        for a drink. You accept and follow him to the Green Tavern.
+        
+        While you are at the pub you learn from Octavio Ricca that Papa 
+        Kirill was a very bad man who would deal drugs all around Illinois. 
+        His murder was not an act of revenge or hatred but a way of protecting
+        thousands of people. Indeed, not only did Papa Kirill deal the drugs
+        but he also made them in his underground lab; therefore when customers
+        weren't satisfied with the product Papa Kirill was afraid that they 
+        would talk badly about his merchandise and his solution was murder. 
+        He would change the drug to become lethal on injection. 
+        
+        This information was very hard to digest and you ask the waitress
+        for a bottle of vodka. You spend the rest of the night talking about
+        your exploits around the world.
+        
+        A few months later you announce publicly that you are retiring
+        from being an international detective. The media goes crazy and
+        you get a lot of attention for many weeks. 
+        
+        You are now running your uncle's restaurant with Octavio Ricca 
+        as your right-hand man. You are now lovers and are going to get
+        engaged secretly.
+        
+        Congratulations! You have finished the game."""
     elif rounds == 0 and enemy["rounds"] > 0:
-        return "You ran out of mojo. {} notices this and approaches, before performing a killer dance move.".format(enemy["name"])
+        return """You ran out of mojo. Octavio Ricca notices this and approaches, 
+        before performing a killer dance move.
+        
+        After the dance, you hug it out. Octavio Ricca invites you to a pub
+        for a drink. You accept and follow him to the Green Tavern.
+        
+        While you are at the pub you learn from Octavio Ricca that Papa 
+        Kirill was a very bad man who would deal drugs all around Illinois. 
+        His murder was not an act of revenge or hatred but a way of protecting
+        thousands of people. Indeed, not only did Papa Kirill deal the drugs
+        but he also made them in his underground lab; therefore when customers
+        weren't satisfied with the product Papa Kirill was afraid that they 
+        would talk badly about his merchandise and his solution was murder. 
+        He would change the drug to become lethal on injection. 
+        
+        This information was very hard to digest and you ask the waitress
+        for a bottle of vodka. You spend the rest of the night talking about
+        your exploits around the world.
+        
+        A few months later you announce publicly that you are retiring
+        from being an international detective. The media goes crazy and
+        you get a lot of attention for many weeks. 
+        
+        You are now running your uncle's restaurant with Octavio Ricca 
+        as your right-hand man. You are now lovers and are going to get
+        engaged secretly.
+        
+        Congratulations! You have finished the game."""
     else:  # enemy["rounds"] == 0:
         return "{} runs out of dance points and flees, hiding his shame.".format(enemy["name"])
 
