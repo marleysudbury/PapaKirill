@@ -3,6 +3,12 @@ import os
 from game import room_ver
 
 
+def shortcut_word(word):
+    upper = word.upper()
+    string = "({0}){1}"
+    return string.format(upper[0], upper[1:])
+
+
 def clear_console():
     # Clears the console.
     os.system('cls' if os.name == 'nt' else 'clear')

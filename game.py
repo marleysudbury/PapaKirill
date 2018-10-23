@@ -13,6 +13,28 @@ import settings
 room_ver = 0
 
 
+def equivalent_commands(given, commands):
+    # Returns an equivalent direction if one can be found.
+    equivalents = {}
+    for command in commands:
+        first_letter = command[0]
+        if first_letter in equivalents:
+            is_already_there = True
+            length = 1
+            while is_already_there:
+                equivalent = command[0:length]
+                if equivalent in equivalents:
+                    length += 1
+                else:
+                    equivalents[equivalent] = command
+        else:
+            equivalents[first_letter] = command
+    if given in equivalents:
+        return equivalents[given]
+    else:
+        return ' '
+
+
 def list_of_items(items):
     # Returns a comma-separated string from a list of items.
     result = ''
@@ -181,7 +203,8 @@ def execute_inspect(evidence_name, current):
 
 def execute_go(direction, current):
     # Move player or print error text.
-    equivalent = equivalent_direction(direction)
+    cardinals = ['north', 'east', 'south', 'west']
+    equivalent = equivalent_commands(direction, cardinals)
     if is_valid_exit(current["exits"], equivalent):
         global current_room
         current_room = rooms[current["exits"][equivalent]]
@@ -230,7 +253,7 @@ def execute_command(command, current):
             return "Toggle what?\n"
     elif command[0] == "go":
         if len(command) > 1:
-            execute_go(command[1], current)
+            return execute_go(command[1], current)
         else:
             return "Go where?\n"
     elif command[0] == "take":
