@@ -38,9 +38,9 @@ room_pizzeria = [{
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
-    "items": [item_flyer],
+    "items": [],
 
-    "evidence": [evidence_dough],
+    "evidence": [evidence_dough, evidence_flyer],
 
     "characters": [],
 
@@ -73,7 +73,7 @@ room_pizzeria = [{
 
     "exits": {"west": "Parking", "east": "Alleyway"},
 
-    "items": [item_round],
+    "items": [],
 
     "people": [],
 
@@ -92,7 +92,7 @@ room_pizzeria = [{
 
     "exits": {"west": "Parking", "east": "Alleyway", "down": "Sewers"},
 
-    "items": [item_round],
+    "items": [],
 
     "people": [],
 
@@ -139,7 +139,7 @@ room_parking = [{
 
     "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "items": [item_round],
+    "items": [],
 
     "people": [],
 
@@ -189,11 +189,11 @@ room_jazzclub = [{
     of you and the stage is on the right. All the tables
     are placed around the stage.
     
-    There's a bullet under on the floor""",
+    """,
 
     "exits": {"north": "Car Park and Delivery Station"},
 
-    "items": [item_bullet],
+    "items": [],
 
     "evidence": [],
 
@@ -356,13 +356,14 @@ room_sewers = [{
     of human waste which stings your nostrils.
     
     Behind you is the ladder you used to come down.
-    You cannot go back up as someone closed the hatch
-    back up.
+    You cannot go back up as someone closed the manhole.
     
     On your right is a poster of Kirill on a bear.
     
     As you walk towards it you feel something under your
-    feet. A bunch of feces covers it.""",
+    feet. A bunch of feces covers it.
+    
+    You put your hands in the sewer and find a knife""",
 
     "exits": {"up": "Papa Kirill's"},
 
@@ -481,7 +482,7 @@ room_alleyway = [{
     }
 ]
 
-    "items": [item_biscuits, item_handbook, item_round],
+
 
 rooms = {
     "Papa Kirill's": room_pizzeria,

@@ -92,7 +92,7 @@ person_killer = {
 
 }
 
-person_cop ={
+person_cop = {
     "name": "Bob Smith",
 
     "dialog": {
@@ -104,12 +104,27 @@ person_cop ={
     }
 }
 
+person_fakecop = {
+    "name": "Lucas Tobb",
+
+    "dialog": dict(
+        intro="",
+        text1="",
+        text2="",
+        text3="",
+        text4=""),
+
+}
+
 characters = {
-    "Kirill": person_detective,
-    "Andy": person_barman,
-    "Christine": person_witness,
-    "Octavio": person_killer,
-    "Bob": person_cop,
+    "Kirill Sidirov": person_detective,
+    "Andy Silver": person_barman,
+    "Christine Szymankowszczyzna": person_witness,
+    "Octavio Ricca": person_killer,
+    "Lucas Tobb": person_fakecop,
+    "Bob Smith": person_cop,
+
+
 }
 
 print(person_barman["dialog"]["text1"])

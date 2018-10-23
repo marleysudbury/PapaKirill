@@ -2,12 +2,12 @@ from items import *
 from map import rooms
 
 # Player properties.
-inventory = [item_id, item_laptop, item_money]
+inventory = [item_gun]
 evidence = []
 rounds = 0
 health_points = 100
 player_steps = 0
-current_room = rooms["Reception"]
+current_room = rooms["Papa Kirill's"]
 
 
 # Player methods.
