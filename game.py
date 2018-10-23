@@ -123,7 +123,11 @@ def print_room_item(item):
 
 def exit_leads_to(exits, direction):
     # Returns the name of the room into which an exit leads.
-    return rooms[exits[direction]][room_ver]["name"]
+    this_room_name = exits[direction]
+    this_room_object = rooms[this_room_name]
+    this_rooms = this_room_object["rooms"]
+    this_room = this_rooms[room_ver]
+    return this_room["name"]
 
 
 def print_exit(direction, leads_to):
@@ -297,14 +301,14 @@ def main():
     while output != "exit" and output != "ending":
         clear_console()
         # Render.
-        print_room(current_room[room_ver])
+        print_room(current_room['rooms'][room_ver])
         print_inventory_items(inventory)
         if output:
             print(output)
         # Input.
-        command = menu(current_room[room_ver]["exits"], current_room[room_ver]["items"], inventory, current_room[room_ver]["characters"])
+        command = menu(current_room['rooms'][room_ver]["exits"], current_room['rooms'][room_ver]["items"], inventory, current_room['rooms'][room_ver]["characters"])
         # Update.
-        output = execute_command(command, current_room[room_ver])
+        output = execute_command(command, current_room['rooms'][room_ver])
 
     if output == "ending":
         if input("1 or 2?: ") == "1":

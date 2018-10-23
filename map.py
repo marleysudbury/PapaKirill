@@ -3,386 +3,396 @@ from items import *
 from evidence import *
 from characters import *
 
-room_pizzeria = [{
-    "name": "Papa Kirill's",
+room_pizzeria = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Papa Kirill's",
 
-    "description": """You, Detective Kirill Sidirov, are standing in the finest pizzeria in Chicago: Papa Kirill's. Having spent most of your childhood here with your uncle running around, knocking things over and eating free pizza, you are very familiar with the ins and outs of this eatery. You start your detective work by searching the building in the hope of finding any clues that might explain your uncle's mysterious death.
-
+            "description": """You, Detective Kirill Sidirov, are standing in the finest pizzeria in Chicago: Papa Kirill's. Having spent most of your childhood here with your uncle running around, knocking things over and eating free pizza, you are very familiar with the ins and outs of this eatery. You start your detective work by searching the building in the hope of finding any clues that might explain your uncle's mysterious death.
+        
 Stooping down, you examine the body:
-
+        
 Under a stained cooking apron lies your uncle, face down. He is dead. Garbed in a blood-stained white tuxedo with a black bow tie, six stab wounds line his back. Beside the corpse is a table. On this table sits Papa Kirill’s chef’s hat. Curiously, there is still dough on the table and there is a hand mark in the middle of it, that’s a big hand! You should inspect it.
-
+        
 This murder seems very personal.. Who would do this and why.. Your uncle might not be the virtuous innocent man you once thought he was..
-
+        
 Under the table, you notice the edge of a purple piece of paper.
-
+        
 The evidence here is sparse, you need to look elsewhere. The Car Park and Delivery Station is west and the Alleyway is east.""",
 
-    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
+            "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [evidence_dough, evidence_flyer],
+            "evidence": [evidence_dough, evidence_flyer],
 
-    "characters": [],
+            "characters": [],
+        },
+        {
+            "name": "Papa Kirill's",
 
-},
-    {
-    "name": "Papa Kirill's",
+            "description": """You are in the restaurant, Papa Kirill's corpse is still on the floor in the kitchen. There's a bullet on the floor.""",
 
-    "description": """You are in the restaurant, Papa Kirill's corpse is still on the floor in the kitchen. There's a bullet on the floor.""",
+            "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
-    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
+            "items": [item_bullet],
 
-    "items": [item_bullet],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [],
+        },
+        {
+            "name": "Papa Kirill's",
 
-    "characters": [],
-    },
-    {
-    "name": "Papa Kirill's",
+            "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform checking out your uncle's cadaver.""",
 
-    "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform checking out your uncle's cadaver.""",
+            "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
-    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
+            "items": [],
 
-    "items": [],
+            "people": [],
 
-    "people": [],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [person_fakecop],
+        },
+        {
+            "name": "Papa Kirill's",
 
-    "characters": [person_fakecop],
-    },
-    {
-    "name": "Papa Kirill's",
+            "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
 
-    "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
+            "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway", "down": "Sewers"},
 
-    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway", "down": "Sewers"},
+            "items": [],
 
-    "items": [],
+            "people": [],
 
-    "people": [],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [person_killer],
+        }
+    ]
+}
+room_parking = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Car Park and Delivery Station",
 
-    "characters": [person_killer],
-    }]
-room_parking = [{
-    "name": "Car Park and Delivery Station",
-
-    "description": """You are in the Car Park and Delivery Station. There are a few cars scattered about the lot, presumably customers. A large mark, likely left by a tyre, heads off down the concrete road. No delivery bike could make such an imprint - it was definitely a car but which one remains a mystery. I should ask Christine.
-
+            "description": """You are in the Car Park and Delivery Station. There are a few cars scattered about the lot, presumably customers. A large mark, likely left by a tyre, heads off down the concrete road. No delivery bike could make such an imprint - it was definitely a car but which one remains a mystery. I should ask Christine.
+        
 Oh, there's a bullet on the floor.
-
+        
 You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
 
-    "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
+            "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "items": [item_bullet],
+            "items": [item_bullet],
 
-    "evidence": [evidence_tire],
+            "evidence": [evidence_tire],
 
-    "characters": [],
+            "characters": [],
+        },
+        {
+            "name": "Car Park and Delivery Station",
 
-    },
-    {
+            "description": """The tire mark is still on the floor. The weird guy that was at Andy's Jazz Club jumps into the Alleyway.
+        
+        Nothing else to see here.""",
 
-    "name": "Car Park and Delivery Station",
+            "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "description": """The tire mark is still on the floor. The weird guy that was at Andy's Jazz Club jumps into the Alleyway.
+            "items": [],
 
-Nothing else to see here.""",
+            "people": [],
 
-    "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
+            "evidence": [],
 
-    "items": [],
+            "characters": [],
+        },
+        {
+            "name": "Car Park and Delivery Station",
 
-    "people": [],
+            "description": """The tire mark is still on the floor. Nothing special to notice here apart from another bullet.""",
 
-    "evidence": [],
+            "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "characters": [],
-    },
-    {
-    "name": "Car Park and Delivery Station",
+            "items": [item_bullet],
 
-    "description": """The tire mark is still on the floor. Nothing special to notice here apart from another bullet.""",
+            "evidence": [],
 
-    "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
+            "characters": [],
+        },
+        {
+            "name": "Car Park and Delivery Station",
 
-    "items": [item_bullet],
+            "description": """The tire mark is still on the floor. Nothing special to notice here.""",
 
-    "evidence": [],
+            "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
 
-    "characters": [],
-    },
-    {
-    "name": "Car Park and Delivery Station",
+            "items": [],
 
-    "description": """The tire mark is still on the floor. Nothing special to notice here.""",
+            "evidence": [],
 
-    "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
+            "characters": [],
+        }
+    ]
+}
+room_jazzclub = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Andy's Jazz Club",
 
-    "items": [],
+            "description": """You are in Andy's Jazz Club. Christine should be playing soon. The bar is in front of you and the stage is on the right. All the tables are placed around the stage.""",
 
-    "evidence": [],
+            "exits": {"north": "Car Park and Delivery Station"},
 
-    "characters": [],
-    }
-]
-room_jazzclub = [{
-    "name": "Andy's Jazz Club",
+            "items": [],
 
-    "description": """You are in Andy's Jazz Club. Christine should be playing soon. The bar is in front of you and the stage is on the right. All the tables are placed around the stage.""",
+            "evidence": [],
 
-    "exits": {"north": "Car Park and Delivery Station"},
+            "characters": [person_witness],
+        },
+        {
+            "name": "Andy's Jazz Club",
 
-    "items": [],
-
-    "evidence": [],
-
-    "characters": [person_witness],
-
-},
-    {
-
-    "name": "Andy's Jazz Club",
-
-    "description": """The Jazz Club is closed.
-
+            "description": """The Jazz Club is closed.
+        
 Oh, another bullet is on the floor.""",
 
-    "exits": {"north": "Car Park and Delivery Station"},
+            "exits": {"north": "Car Park and Delivery Station"},
 
-    "items": [item_bullet],
+            "items": [item_bullet],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [],
-    },
-    {
+            "characters": [],
+        },
+        {
+            "name": "Andy's Jazz Club",
 
-    "name": "Andy's Jazz Club",
+            "description": """The Jazz Club is closed""",
 
-    "description": """The Jazz Club is closed""",
+            "exits": {"north": "Car Park and Delivery Station"},
 
-    "exits": {"north": "Car Park and Delivery Station"},
+            "items": [],
 
-    "items": [],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [],
+        },
+        {
+            "name": "Andy's Jazz Club",
 
-    "characters": [],
-    },
-    {
+            "description": """You are in Andy's Jazz Club. Hand in hand you walk towards the dance floor with Octavio Ricca.""",
 
-    "name": "Andy's Jazz Club",
+            "exits": {"north": "Car Park and Delivery Station"},
 
-    "description": """You are in Andy's Jazz Club. Hand in hand you walk towards the dance floor with Octavio Ricca.""",
+            "items": [],
 
-    "exits": {"north": "Car Park and Delivery Station"},
+            "evidence": [],
 
-    "items": [],
+            "characters": [person_killer],
+        }
+    ]
+}
+room_policestation = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Chicago Police Department",
 
-    "evidence": [],
+            "description": """You are in the CPD. There are too many people in the waiting room. It's useless to stay here any longer.""",
 
-    "characters": [person_killer],
-    }
-]
+            "exits": {"north": "Alleyway"},
 
-room_policestation = [{
-    "name": "Chicago Police Department",
+            "items": [],
 
-    "description": """You are in the CPD. There are too many people in the waiting room. It's useless to stay here any longer.""",
+            "evidence": [],
 
-    "exits": {"north": "Alleyway"},
+            "characters": [],
+        },
+        {
+            "name": "Chicago Police Department",
 
-    "items": [],
-
-    "evidence": [],
-
-    "characters": [],
-    },
-    {
-    "name": "Chicago Police Department",
-
-    "description": """You are in the CPD. A lady is at the reception. 
-    
-    'Hello there,' she said, 'take a seat we'll take care of you soon'.
-
+            "description": """You are in the CPD. A lady is at the reception. 
+            
+'Hello there,' she said, 'take a seat we'll take care of you soon'.
+        
 You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
-    "exits": {"north": "Alleyway"},
+            "exits": {"north": "Alleyway"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [],
-    },
-    {
-    "name": "Chicago Police Department",
+            "characters": [],
+        },
+        {
+            "name": "Chicago Police Department",
 
-    "description": """You enter the CPD and the reception lady makes you sit down to wait.
-
+            "description": """You enter the CPD and the reception lady makes you sit down to wait.
+        
 Bob Smith enters the room.""",
 
-    "exits": {"north": "Alleyway"},
+            "exits": {"north": "Alleyway"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [person_cop],
-    },
-    {
-    "name": "Chicago Police Department",
+            "characters": [person_cop],
+        },
+        {
+            "name": "Chicago Police Department",
 
-    "description": """You are in the CPD. The same lady is at the reception. 
-
+            "description": """You are in the CPD. The same lady is at the reception. 
+        
 'Hello there,' she said, 'take a seat we'll take care of you soon'.
-
+        
 You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
 
-    "exits": {"north": "Alleyway"},
+            "exits": {"north": "Alleyway"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [],
-    }
-]
+            "characters": [],
+        }
+    ]
+}
+room_sewers = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Sewers",
 
-room_sewers = [{
-    "name": "Sewers",
+            "description": """You found a bug in the system. You should not be here.""",
 
-    "description": """You found a bug in the system. You should not be here.""",
+            "exits": {"up": "Papa Kirill's"},
 
-    "exits": {"up": "Papa Kirill's"},
+            "items": [],
 
-    "items": [],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [],
+        },
+        {
+            "name": "Sewers",
 
-    "characters": [],
-},
-    {
-
-    "name": "Sewers",
-
-    "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils.
-
+            "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils.
+        
 Behind you is the ladder you used to come down. You cannot go back up as someone closed the manhole.
-
+        
 On your right is a poster of Kirill on a bear.
-
+        
 As you walk towards it you feel something under your feet. A bunch of feces covers it.
-
+        
 You put your hands in the sewer and find a knife""",
 
-    "exits": {"up": "Papa Kirill's"},
+            "exits": {"up": "Papa Kirill's"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [evidence_poster, evidence_knife],
+            "evidence": [evidence_poster, evidence_knife],
 
-    "characters": [],
-    },
-    {
-    "name": "Sewers",
+            "characters": [],
+        },
+        {
+            "name": "Sewers",
 
-    "description": """It smells horrible down here. If you stay too long you might get a headache.
-
+            "description": """It smells horrible down here. If you stay too long you might get a headache.
+        
 You can only go back up to Papa Kirill's""",
 
-    "exits": {"up": "Papa Kirill's"},
+            "exits": {"up": "Papa Kirill's"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [],
-    },
-    {
-    "name": "Sewers",
+            "characters": [],
+        },
+        {
+            "name": "Sewers",
 
-    "description": """It smells horrible down here. If you stay too long you might get a headache.
-
+            "description": """It smells horrible down here. If you stay too long you might get a headache.
+        
 You can only go back up to Papa Kirill's""",
 
-    "exits": {"up": "Papa Kirill's"},
+            "exits": {"up": "Papa Kirill's"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [],
+            "evidence": [],
 
-    "characters": [],
-    }
-]
+            "characters": [],
+        }
+    ]
+}
+room_alleyway = {
+    "version": 0,
+    "rooms": [
+        {
+            "name": "Alleyway",
 
-room_alleyway = [{
-    "name": "Alleyway",
+            "description": """You are in the Alleyway. Do not spend too much time here or you might get snatched up by someone.""",
 
-    "description": """You are in the Alleyway. Do not spend too much time here or you might get snatched up by someone.""",
+            "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department"},
 
-    "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department"},
+            "items": [],
 
-    "items": [],
+            "evidence": [],
 
-    "evidence": [],
+            "characters": [],
+        },
+        {
+            "name": "Alleyway",
 
-    "characters": [],
-},
-    {
-
-    "name": "Alleyway",
-
-    "description": """You are in the Alleyway. The shady guy that was in the corner of Andy's Jazz Club is no where to be seen even though you saw him pop in the Alleyway.
-
+            "description": """You are in the Alleyway. The shady guy that was in the corner of Andy's Jazz Club is no where to be seen even though you saw him pop in the Alleyway.
+        
 Walking down the Alleyway you almost trip over a drunk person that was lying there.""",
 
-    "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department", "down": "Sewers"},
+            "exits": {"west": "Papa Kirill's", "south": "Chicago Police Department", "down": "Sewers"},
 
-    "items": [],
+            "items": [],
 
-    "evidence": [evidence_drunkbody, evidence_manhole],
+            "evidence": [evidence_drunkbody, evidence_manhole],
 
-    "characters": [],
-    },
-    {
+            "characters": [],
+        },
+        {
+            "name": "Alleyway",
 
-        "name": "Alleyway",
+            "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
 
-        "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
+            "exits": {"south": "Chicago Police Department", "west": "Papa Kirill's", "down": "Sewers"},
 
-        "exits": {"south": "Chicago Police Department", "west": "Papa Kirill's", "down": "Sewers"},
+            "items": [],
 
-        "items": [],
+            "evidence": [],
 
-        "evidence": [],
+            "characters": [],
+        },
+        {
+            "name": "Alleyway",
 
-        "characters": [],
-    },
-    {
+            "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
 
-        "name": "Alleyway",
+            "exits": {},
 
-        "description": """The drunk man's body is still on the side where you left him. The manhole is slightly open.""",
+            "items": [item_bullet],
 
-        "exits": {},
+            "evidence": [],
 
-        "items": [item_bullet],
-
-        "evidence": [],
-
-        "characters": [],
-    }
-]
-
+            "characters": [],
+        }
+    ]
+}
 
 rooms = {
     "Papa Kirill's": room_pizzeria,
@@ -398,10 +408,10 @@ def pop_room_item(identity, name):
     index = 0
     for room in rooms:   
         from game import room_ver
-        this_room = rooms[room][room_ver]
+        this_room = rooms[room]['rooms'][room_ver]
         if this_room['name'] == name:
             for item in this_room['items']:
                 if item['id'] == identity:
-                    return rooms[room][room_ver]['items'].pop(index)
+                    return rooms[room]['rooms'][room_ver]['items'].pop(index)
                 index += 1
     return False
