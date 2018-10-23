@@ -18,7 +18,7 @@ Under the table, you notice the edge of a purple piece of paper.
 
 The evidence left in the restaurant was very minor, you need to look elsewhere. The Car Park and Delivery Station is to the west and the Alleyway is to the east. You might need to check them both out to really get a sense of what went wrong the night of the 21st of July 1956.""",
 
-    "exits": {"west": "Parking", "east": "Alleyway"},
+    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
     "items": [],
 
@@ -32,7 +32,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
 
     "description": """You are in the restaurant, Papa Kirill's corpse is still on the floor in the kitchen. There's a bullet on the floor.""",
 
-    "exits": {"west": "Parking", "east": "Alleyway"},
+    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
     "items": [item_bullet],
 
@@ -45,7 +45,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
 
     "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform checking out your uncle's cadaver.""",
 
-    "exits": {"west": "Parking", "east": "Alleyway"},
+    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
     "items": [],
 
@@ -60,7 +60,7 @@ The evidence left in the restaurant was very minor, you need to look elsewhere. 
 
     "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
 
-    "exits": {"west": "Parking", "east": "Alleyway", "down": "Sewers"},
+    "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway", "down": "Sewers"},
 
     "items": [],
 
@@ -138,7 +138,7 @@ room_jazzclub = [{
 
     "description": """You are in Andy's Jazz Club. Christine should be playing soon. The bar is in front of you and the stage is on the right. All the tables are placed around the stage.""",
 
-    "exits": {"north": "Parking"},
+    "exits": {"north": "Car Park and Delivery Station"},
 
     "items": [],
 
@@ -155,7 +155,7 @@ room_jazzclub = [{
 
 Oh, another bullet is on the floor.""",
 
-    "exits": {"north": "Parking"},
+    "exits": {"north": "Car Park and Delivery Station"},
 
     "items": [item_bullet],
 
@@ -169,7 +169,7 @@ Oh, another bullet is on the floor.""",
 
     "description": """The Jazz Club is closed""",
 
-    "exits": {"north": "Parking"},
+    "exits": {"north": "Car Park and Delivery Station"},
 
     "items": [],
 
@@ -183,7 +183,7 @@ Oh, another bullet is on the floor.""",
 
     "description": """You are in Andy's Jazz Club. Hand in hand you walk towards the dance floor with Octavio Ricca.""",
 
-    "exits": {"north": "Parking"},
+    "exits": {"north": "Car Park and Delivery Station"},
 
     "items": [],
 
@@ -384,10 +384,9 @@ Walking down the Alleyway you almost trip over a drunk person that was lying the
 ]
 
 
-
 rooms = {
     "Papa Kirill's": room_pizzeria,
-    "Parking": room_parking,
+    "Car Park and Delivery Station": room_parking,
     "Andy's Jazz Club": room_jazzclub,
     "Chicago Police Department": room_policestation,
     "Sewers": room_sewers,
