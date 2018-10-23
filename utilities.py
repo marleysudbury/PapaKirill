@@ -1,5 +1,6 @@
 from player import *
 import os
+from game import room_ver
 
 
 def clear_console():
@@ -65,6 +66,8 @@ def print_description(room):
     char_counter = 0
     description_line = ''
     for char in description:
+        if char == "\n":
+            char_counter = 0
         if line_counter < len(minimap_lines):
             if char_counter < line_without_minimap:
                 char_counter += 1

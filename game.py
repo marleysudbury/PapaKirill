@@ -10,6 +10,8 @@ from items import *
 from characters import *
 import settings
 
+room_ver = 0
+
 
 def list_of_items(items):
     # Returns a comma-separated string from a list of items.
@@ -24,12 +26,11 @@ def list_of_items(items):
 
 
 def print_people(character):
-    # Prints people in room
+    # Prints people in room.
     s = "TALK"
     s += " to "
     s += str(character["name"])
     print(s)
-    # Pretty sure this is wrong, confused myself
 
 
 def print_room_items(room):
@@ -100,7 +101,7 @@ def print_room_item(item):
 
 def exit_leads_to(exits, direction):
     # Returns the name of the room into which an exit leads.
-    return rooms[exits[direction]]["name"]
+    return rooms[exits[direction]][room_ver]["name"]
 
 
 def print_exit(direction, leads_to):
@@ -196,7 +197,7 @@ def execute_take(item_id1, current):
     global rounds
     global health_points
     health_points = 50
-    if item == item_round:
+    if item == item_bullet:
         rounds += 1
     elif item:
         inventory.append(item)
@@ -273,15 +274,14 @@ def main():
     while output != "exit" and output != "ending":
         clear_console()
         # Render.
-        """print_people(current_room["people"])"""
-        print_room(current_room)
+        print_room(current_room[room_ver])
         print_inventory_items(inventory)
         if output:
             print(output)
         # Input.
-        command = menu(current_room["exits"], current_room["items"], inventory, current_room["people"])
+        command = menu(current_room[room_ver]["exits"], current_room[room_ver]["items"], inventory, current_room[room_ver]["characters"])
         # Update.
-        output = execute_command(command, current_room)
+        output = execute_command(command, current_room[room_ver])
 
     if output == "ending":
         if input("1 or 2?: ") == "1":

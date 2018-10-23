@@ -2,7 +2,7 @@ from items import *
 from map import rooms
 
 # Player properties.
-inventory = [item_gun]
+inventory = [item_revolver]
 evidence = []
 rounds = 0
 health_points = 100
