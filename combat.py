@@ -18,7 +18,7 @@ enemy = {
 
 def combat(rounds1, health_points1, player_steps):
     global rounds
-    rounds = 6
+    rounds = rounds1
     global health_points
     health_points = health_points1
     player_steps = 50
