@@ -15,7 +15,7 @@ characters = {
 }
 
 room_pizzeria = {
-    "version": 2,
+    "version": 0,
     "name": "Papa Kirill's",
     "rooms": [
         {
@@ -25,7 +25,7 @@ room_pizzeria = {
 
 Stooping down, you examine the body:
 
-Under a stained cooking apron lies your uncle, face down. He is dead. Garbed in a blood-stained white tuxedo with a black bow tie, six stab wounds line his back. Beside the corpse is a table. On this table sits Papa Kirill’s chef’s hat. Curiously, there is still DOUGH on the table and there is a hand mark in the middle of it, that’s a big hand! You should inspect it.
+Under a stained cooking apron lies your uncle, face down. He is dead. Garbed in a blood-stained white tuxedo with a black bow tie, six stab wounds line his back. Beside the corpse is a table. On this table sits Papa Kirill's chef's hat. Curiously, there is still DOUGH on the table and there is a hand mark in the middle of it, that's a big hand! You should inspect it.
 
 Under the table, you notice the edge of a purple piece of paper. It looks like a FLYER.
 
