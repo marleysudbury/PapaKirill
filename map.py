@@ -15,7 +15,7 @@ characters = {
 
 room_pizzeria = {
     "visited": False,
-    "version": 2,
+    "version": 0,
     "name": "Papa Kirill's",
     "rooms": [
         {
@@ -231,7 +231,7 @@ room_sewers = {
         {
             "name": "Sewers",
 
-            "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils. Behind you is the ladder you used to come down. You cannot go back up as someone closed the manhole.
+            "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils. Above you is the manhole, you can't jump that high.
 
 On your right is a POSTER of Kirill on a bear.
 
@@ -241,9 +241,24 @@ You put your hands in the sewer and find a KNIFE.""",
 
             "exits": {"up": "Papa Kirill's"},
 
-            "items": [items.item_bullet],
+            "items": [],
 
             "evidence": [evidence.evidence_poster, evidence.evidence_knife],
+
+            "characters": [],
+        },
+        {
+            "name": "Sewers",
+
+            "description": """You are in the Sewers. Around you is a lot of human waste which stings your nostrils. Behind you is the ladder you used to come down. You cannot go back up the same way.
+
+As you walk towards it you feel something under your feet. A bunch of feces covers it.""",
+
+            "exits": {"up": "Papa Kirill's"},
+
+            "items": [items.item_bullet],
+
+            "evidence": [],
 
             "characters": [],
         }
