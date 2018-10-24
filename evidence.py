@@ -42,6 +42,6 @@ evidence_tire = {
 
 evidence_gloves = {
     "id": "gloves",
-    "name": "Driving gloves",
+    "name": "Gardening gloves",
     "description": "Gardening gloves. Brand new."
 }
