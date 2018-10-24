@@ -35,7 +35,13 @@ evidence_manhole = {
 }
 
 evidence_tire = {
-    "id:": "tire",
+    "id": "tire",
     "name": "Tire mark",
     "description": "A big tire mark"
+}
+
+evidence_gloves = {
+    "id": "gloves",
+    "name": "Driving gloves",
+    "description": "Gardening gloves. Brand new."
 }
