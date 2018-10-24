@@ -1,13 +1,14 @@
-from items import *
-from map import rooms
+import items
+import map
 
 # Player properties.
-inventory = [item_revolver]
+inventory = [items.item_revolver]
 evidence = []
+speech = []
 rounds = 0
 health_points = 100
 player_steps = 0
-current_room = rooms["Papa Kirill's"]
+current_room = map.rooms["Papa Kirill's"]
 
 
 # Player methods.

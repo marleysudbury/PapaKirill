@@ -1,6 +1,5 @@
-from player import *
+import player
 import os
-from game import room_ver
 
 
 def shortcut_word(word):
@@ -63,7 +62,7 @@ def print_description(room):
         remainder = (line_length * 3) - description_length
         description += (' ' * remainder)
 
-    has_a_weapon = item_is_in_list('id', 'revolver')
+    has_a_weapon = player.item_is_in_list('id', 'revolver')
     minimap_lines = generate_minimap(room['exits'], has_a_weapon)
 
     line_counter = 0
