@@ -15,7 +15,7 @@ characters = {
 }
 
 room_pizzeria = {
-    "version": 0,
+    "version": 2,
     "name": "Papa Kirill's",
     "rooms": [
         {
@@ -293,9 +293,9 @@ rooms = {
 
 
 def pop_room_item(identity, name):
-    room_ver = get_room_version(name)
     global rooms
     for room in rooms:
+        room_ver = get_room_version(rooms[room]['name'])
         this_room = rooms[room]['rooms'][room_ver]
         if this_room['name'] == name:
             index = 0

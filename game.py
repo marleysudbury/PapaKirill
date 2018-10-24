@@ -6,7 +6,6 @@ import utilities
 import gameparser
 import items
 import settings
-import narratives
 import combat
 import dancing
 
@@ -142,7 +141,8 @@ def print_room(room):
     # Prints room information.
     print_status_bar()
     print('')
-    print(room["name"].upper())
+    print(room["name"].upper() + ': ' + str(player.current_room['version']))
+    print(map.rooms["Papa Kirill's"]["version"])
     print('')
     utilities.print_description(room)
     print('')
@@ -280,44 +280,44 @@ def execute_command(command):
     # Executes command.
     if 0 == len(command):
         return
-    if command[0] == "toggle":
+    if command[0] == "toggle" or command[0] == "tog":
         if len(command) > 1:
             return execute_toggle(command[1])
         else:
             return "Toggle what?\n"
-    if command[0] == "talk":
+    if command[0] == "talk" or command[0] == "ta":
         if len(command) > 1:
             return execute_talk()
         else:
             return "Talk to whom?\n"
-    elif command[0] == "go":
+    elif command[0] == "go" or command[0] == "g":
         if len(command) > 1:
             return execute_go(command[1])
         else:
             return "Go where?\n"
-    elif command[0] == "take":
+    elif command[0] == "take" or command[0] == "t":
         if len(command) > 1:
             return execute_take(command[1])
         else:
             return "Take what?\n"
-    elif command[0] == "drop":
+    elif command[0] == "drop" or command[0] == "d":
         if len(command) > 1:
             return execute_drop(command[1])
         else:
             return "Drop what?\n"
-    elif command[0] == "inspect":
+    elif command[0] == "inspect" or command[0] == "ins":
         if len(command) > 1:
             return execute_inspect(command[1])
         else:
             return "Inspect what?\n"
-    elif command[0] == "evidence":
+    elif command[0] == "evidence" or command[0] == "ev":
         return execute_evidence()
-    elif command[0] == "speech":
+    elif command[0] == "speech" or command[0] == "sp":
         return execute_speech()
-    elif command[0] == "exit":
+    elif command[0] == "exit" or command[0] == "ex":
         return "exit"
     else:
-        return "This makes no sense.\n"
+        return "'{0}' makes no sense.\n".format(command)
 
 
 # Input
@@ -332,17 +332,21 @@ def menu(exits, room_items, inv_items, room_characters):
     return normalised_user_input
 
 
-def render_screen(r, i, o):
+def render_screen(r, o):
     utilities.clear_console()
     print_room(r)
-    # print_inventory_items(i)
     if o:
         print(o)
 
 
+first_done = True
+
+
 def demo(room_ver):
-    if room_ver == 0 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
+    global first_done
+    if first_done and room_ver == 0 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Papa Kirill's"]["version"] = 1
+        first_done = False
     if room_ver == 0 and player.current_room == map.rooms["Andy's Jazz Club"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
         map.rooms["Andy's Jazz Club"]["version"] = 1
     if room_ver == 1 and player.current_room == map.rooms["Andy's Jazz Club"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
@@ -352,13 +356,6 @@ def demo(room_ver):
     if player.current_room == map.rooms["Sewers"]:
         map.rooms["Papa Kirill's"]["version"] = 2
     if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"]:
-        print(execute_talk())
-        choice = input("> ")
-        if choice == "fight":
-            print(combat.combat(player.rounds, player.health_points, player.player_steps))
-        else:
-            print(dancing.combat(player.rounds, player.health_points, player.player_steps))
-
         global win_condition
         win_condition = True
 
@@ -378,7 +375,7 @@ def main():
         room_ver = player.current_room["version"]
         this_room = player.current_room['rooms'][room_ver]
         # Render.
-        render_screen(this_room, player.inventory, output)
+        render_screen(this_room, output)
         # Input.
         command = menu(this_room["exits"], this_room["items"], player.inventory, this_room["characters"])
         # Update.
@@ -387,12 +384,18 @@ def main():
         # Execute game director.
         game_director(room_ver)
         # Check for end-game.
+        global win_condition
         if win_condition:
             game_running = False
     utilities.clear_console()
 
     # This is the win screen.
-    print("You've done yourself a win, kiddo.")
+    print("So, detective, what will it be? Fight or dance?")
+    choice = input("> ")
+    if choice == "fight":
+        print(combat.combat(player.rounds, player.health_points, player.player_steps))
+    else:
+        print(dancing.combat(player.rounds, player.health_points, player.player_steps))
 
 
 # Are we being run as a script? If so, run main().
