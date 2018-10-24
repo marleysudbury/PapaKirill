@@ -7,6 +7,8 @@ import gameparser
 import items
 import settings
 import narratives
+import combat
+import dancing
 
 win_condition = False
 
@@ -212,12 +214,12 @@ def execute_inspect(evidence_name):
     evidence = player.current_room["rooms"][room_ver]["evidence"]
     if evidence:
         for evidence_item in evidence:
-            print(evidence_item)
+            # print(evidence_item)
             if evidence_name == evidence_item["id"]:
                 player.evidence.append(evidence_item)
                 room_name = player.current_room['rooms'][room_ver]['name']
                 map.pop_room_evidence(evidence_name, room_name)
-                return "Inspect " + evidence_item["name"].lower() + ": " + evidence_item["description"] + "\n"
+                return "Inspect " + evidence_item["name"] + ": " + evidence_item["description"] + "\n"
 
     return "Inspect: there's nothing to see.\n"
 
@@ -314,8 +316,6 @@ def execute_command(command):
         return execute_speech()
     elif command[0] == "exit":
         return "exit"
-    elif command[0] == "ending":
-        return "ending"
     else:
         return "This makes no sense.\n"
 
@@ -335,7 +335,7 @@ def menu(exits, room_items, inv_items, room_characters):
 def render_screen(r, i, o):
     utilities.clear_console()
     print_room(r)
-    print_inventory_items(i)
+    # print_inventory_items(i)
     if o:
         print(o)
 
@@ -349,7 +349,16 @@ def demo(room_ver):
         map.rooms["Alleyway"]["version"] = 1
     if room_ver == 1 and player.current_room == map.rooms["Alleyway"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Alleyway"]["version"] = 2
-    if player.current_room == map.rooms["Papa Kirill's"] and len(player.evidence) == 7:
+    if player.current_room == map.rooms["Sewers"]:
+        map.rooms["Papa Kirill's"]["version"] = 2
+    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"]:
+        print(execute_talk())
+        choice = input("> ")
+        if choice == "fight":
+            print(combat.combat(player.rounds, player.health_points, player.player_steps))
+        else:
+            print(dancing.combat(player.rounds, player.health_points, player.player_steps))
+
         global win_condition
         win_condition = True
 
@@ -380,8 +389,9 @@ def main():
         # Check for end-game.
         if win_condition:
             game_running = False
-    # This is the win screen.
     utilities.clear_console()
+
+    # This is the win screen.
     print("You've done yourself a win, kiddo.")
 
 
