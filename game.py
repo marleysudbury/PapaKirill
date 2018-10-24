@@ -8,6 +8,7 @@ import items
 import settings
 import narratives
 import combat
+import art
 import dancing
 
 win_condition = False
