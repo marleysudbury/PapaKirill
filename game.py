@@ -6,6 +6,7 @@ import utilities
 import gameparser
 import items
 import settings
+import narratives
 
 win_condition = False
 
@@ -188,7 +189,7 @@ def execute_evidence():
             item_names.append(item["name"])
         string_evidence += (", ".join(item_names))
         string_evidence += ".\n"
-        return string_evidence
+        return "You have {0} pieces of evidence: {1}".format(len(player.evidence), string_evidence)
     else:
         return "Evidence: you don't have any evidence yet.\n"
 
@@ -265,7 +266,7 @@ def execute_talk():
     people = player.current_room["rooms"][room_ver]["characters"]
     if len(people) > 0:
         person = people[0]
-        player.evidence.append(person)
+        player.speech.append(person)
         room_name = player.current_room['rooms'][room_ver]['name']
         map.pop_room_character(room_name)
         return "{0}: '{1}'".format(person["name"], person["speech"])
@@ -339,7 +340,7 @@ def render_screen(r, i, o):
         print(o)
 
 
-def narrative1(room_ver):
+def demo(room_ver):
     if room_ver == 0 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Papa Kirill's"]["version"] = 1
     if room_ver == 0 and player.current_room == map.rooms["Andy's Jazz Club"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
@@ -354,7 +355,7 @@ def narrative1(room_ver):
 
 
 def game_director(room_ver):
-    narrative1(room_ver)
+    demo(room_ver)
 
 
 # Entry point.
