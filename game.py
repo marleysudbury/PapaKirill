@@ -11,7 +11,6 @@ import combat
 import dancing
 
 win_condition = False
-confrontation = False
 
 
 # Utilities.
@@ -272,9 +271,6 @@ def execute_talk():
         player.speech.append(person)
         room_name = player.current_room['rooms'][room_ver]['name']
         map.pop_room_character(room_name)
-        if person == "killer":
-            global confrontation
-            confrontation = True
         return "{0}: '{1}'".format(person["name"], person["speech"])
 
     return "Speech: there's nobody to speak to.\n"
@@ -355,8 +351,8 @@ def demo(room_ver):
         map.rooms["Alleyway"]["version"] = 2
     if player.current_room == map.rooms["Sewers"]:
         map.rooms["Papa Kirill's"]["version"] = 2
-    global confrontation
-    if confrontation:
+    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"]:
+        print(execute_talk())
         choice = input("> ")
         if choice == "fight":
             print(combat.combat(player.rounds, player.health_points, player.player_steps))
