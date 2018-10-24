@@ -7,15 +7,15 @@ characters = {
         "name": "Christine Szymankowszczyzna",
         "speech": "That man over there arrived just before you."
     },
-
     "killer": {
         "name": "Octavio Ricca",
-        "speech": "So, detective, what will it be? Fight or dance?"
+        "speech": "Oh, it's you!"
     }
 }
 
 room_pizzeria = {
-    "version": 0,
+    "visited": False,
+    "version": 2,
     "name": "Papa Kirill's",
     "rooms": [
         {
@@ -59,7 +59,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
 
             "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
-            "items": [],
+            "items": [items.item_bullet],
 
             "people": [],
 
@@ -72,7 +72,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
 
             "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
 
-            "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway", "down": "Sewers"},
+            "exits": {},
 
             "items": [],
 
@@ -85,6 +85,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
     ]
 }
 room_parking = {
+    "visited": False,
     "version": 0,
     "name": "Car Park and Delivery Station",
     "rooms": [
@@ -92,8 +93,6 @@ room_parking = {
             "name": "Car Park and Delivery Station",
 
             "description": """You are in the Car Park and Delivery Station. There are a few cars scattered about the lot, presumably customers. A large mark, likely left by a TIRE, heads off down the concrete road. No delivery bike could make such an imprint - it was definitely a car but which one remains a mystery. I should ask Christine.
-
-There's a bullet on the floor.
 
 You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
 
@@ -104,10 +103,26 @@ You look around but find no other clues. To the south is a bar. To the east is t
             "evidence": [evidence.evidence_tire],
 
             "characters": [],
+        },
+        {
+            "name": "Car Park and Delivery Station",
+
+            "description": """You are in the Car Park and Delivery Station. There are a few cars scattered about the lot, presumably customers. A large mark, likely left by a tire, heads off down the concrete road. No delivery bike could make such an imprint - it was definitely a car but which one remains a mystery. I should ask Christine.
+
+You look around but find no other clues. To the south is a bar. To the east is the restaurant.""",
+
+            "exits": {"south": "Andy's Jazz Club", "east": "Papa Kirill's"},
+
+            "items": [items.item_bullet],
+
+            "evidence": [],
+
+            "characters": [],
         }
     ]
 }
 room_jazzclub = {
+    "visited": False,
     "version": 0,
     "name": "Andy's Jazz Club",
     "rooms": [
@@ -140,6 +155,7 @@ room_jazzclub = {
     ]
 }
 room_policestation = {
+    "visited": False,
     "version": 0,
     "name": "Chicago Police Department",
     "rooms": [
@@ -208,6 +224,7 @@ You see Bob Smith behind a window working on something on his computer. The clos
     ]
 }
 room_sewers = {
+    "visited": False,
     "version": 0,
     "name": "Sewers",
     "rooms": [
@@ -233,6 +250,7 @@ You put your hands in the sewer and find a KNIFE.""",
     ]
 }
 room_alleyway = {
+    "visited": False,
     "version": 0,
     "name": "Alleyway",
     "rooms": [

@@ -1,12 +1,19 @@
 
 def ascii(a):
-    if a == "body": print(drawingbody)
-    elif a == "pizza": print(drawingpizza)
-    elif a == "trophy": print(drawingtrophy)
-    elif a == "jazz": print(drawingjazz)
-    elif a == "rat": print(drawingrat)
-    elif a == "police": print(drawingpolice)
-    elif a == "taxi": print(drawingtaxi)
+    if a == "body":
+        print(drawingbody)
+    elif a == "Papa Kirill's":
+        print(drawingpizza)
+    elif a == "trophy":
+        print(drawingtrophy)
+    elif a == "Andy's Jazz Club":
+        print(drawingjazz)
+    elif a == "Sewers":
+        print(drawingrat)
+    elif a == "Chicago Police Department":
+        print(drawingpolice)
+    elif a == "taxi":
+        print(drawingtaxi)
 
 
 body = "body"

@@ -142,8 +142,11 @@ def print_room(room):
     # Prints room information.
     print_status_bar()
     print('')
-    print(room["name"].upper() + ': ' + str(player.current_room['version']))
-    print(map.rooms["Papa Kirill's"]["version"])
+    print(room["name"].upper())
+    if not player.current_room['visited']:
+        print('')
+        art.ascii(player.current_room['name'])
+        player.current_room['visited'] = True
     print('')
     utilities.print_description(room)
     print('')
@@ -344,6 +347,8 @@ first_done = True
 
 
 def demo(room_ver):
+    if room_ver == 0 and player.current_room == map.rooms["Car Park and Delivery Station"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
+        map.rooms["Car Park and Delivery Station"]["version"] = 1
     global first_done
     if first_done and room_ver == 0 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Papa Kirill's"]["version"] = 1
@@ -356,7 +361,9 @@ def demo(room_ver):
         map.rooms["Alleyway"]["version"] = 2
     if player.current_room == map.rooms["Sewers"]:
         map.rooms["Papa Kirill's"]["version"] = 2
-    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"]:
+    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
+        map.rooms["Papa Kirill's"]["version"] = 3
+    if room_ver == 3 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
         global win_condition
         win_condition = True
 
@@ -388,10 +395,10 @@ def main():
         global win_condition
         if win_condition:
             game_running = False
-    utilities.clear_console()
 
     # This is the win screen.
-    print("So, detective, what will it be? Fight or dance?")
+    print("Ha, try as you might, this is the end.")
+    print("So, 'detective'.. what will it be? FIGHT or DANCE?")
     choice = input("> ")
     if choice == "fight":
         print(combat.combat(player.rounds, player.health_points, player.player_steps))
