@@ -89,7 +89,7 @@ def combat(rounds1, health_points1, player_steps):
         You have completed the game but failed. Try again."""
     elif health_points <= 0:
         return """
-        You were killed by Octavio Ricca.
+        Octavio has fatally shot you down.
         You are dying. As you die your vision gets very blurry. 
         Your uncle appears in front of you.
 
@@ -123,7 +123,6 @@ def combat(rounds1, health_points1, player_steps):
         You ran out of rounds. Octavio Ricca notices this and approaches,
         before shooting you through the head.
         
-        You were killed by Octavio Ricca.
         You are dying. As you die your vision gets very blurry. 
         Your uncle appears in front of you.
 
