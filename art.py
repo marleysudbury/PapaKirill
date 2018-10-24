@@ -1,4 +1,22 @@
-ascii_body = ("""\
+
+def ascii(a):
+    if a == "body": print(drawingbody)
+    elif a == "pizza": print(drawingpizza)
+    elif a == "trophy": print(drawingtrophy)
+    elif a == "jazz": print(drawingjazz)
+    elif a == "rat": print(drawingrat)
+    elif a == "police": print(drawingpolice)
+    elif a == "taxi": print(drawingtaxi)
+
+
+body = "body"
+pizza = "pizza"
+jazz = "jazz"
+trophy = "trophy"
+rat = "rat"
+police = "police"
+taxi = "taxi"
+drawingbody = ("""\
 
 
                                                @@@@.                                               
@@ -31,7 +49,7 @@ ascii_body = ("""\
                                                                                           @        
                                                                                                    """)
 
-ascii_pizza = ("""\
+drawingpizza = ("""\
 
                          ,%@@@@@@@@&%*.                          
                   ,@@#********************#@@(                   
@@ -66,7 +84,7 @@ ascii_pizza = ("""\
                 ,@&***************************(@%                
                      *&@(/************/(#@&*                     """)
 
-ascii_trophy = ("""\
+drawingtrophy = ("""\
                  ..., ./. //,    .......  .. ,/ ,...,                
                .*    /*(. /(,    ....... ... ,(,*   .,/              
               .,.     *(, /(*.   ....... .,. *(/     *,              
@@ -98,7 +116,7 @@ ascii_trophy = ("""\
                     ..%%####%%%%%%&&&&&&&&&&&&&&**,,,...             
                      .....,,,,,,,,,,,,,,,,,,,........            """)
 
-ascii_jazz = ("""\
+drawingjazz = ("""\
                                                      (@@&(           
                                                     @@@@@@@@@@#      
                                                    @@@@@@@@@@@@@@    
@@ -125,7 +143,7 @@ ascii_jazz = ("""\
                                       @@@@@@@@@@@@@@@@@@@@@@         
                                      @@@@@@@@@@@@@@@@@@@@@@(         """)
 
-ascii_rat = ("""\
+drawingrat = ("""\
 
 
                                      .#@@@@@@@&*                     
@@ -157,7 +175,7 @@ ascii_rat = ("""\
                     /                                                
                                                                      """)
 
-ascii_police = ("""\
+drawingpolice = ("""\
                         @@/         .@@@@@          (@@                        
                   %@@@@,,,,#@@@*.@@@,,,,,,,@@@./@@@/,,,,@@@@%                  
             #@@@@,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,@@@@#            
@@ -194,7 +212,7 @@ ascii_police = ("""\
                                      @@@@@                                     
                                                                                """)
 
-ascii_taxi = ("""
+drawingtaxi = ("""
                                 /%###((((((((((((((((((((((((((###%*                               
                               /%##,                              ,##%.                             
                              ###.   .%%###(  *#*   .#* (#   %.     (#%                             
@@ -238,5 +256,6 @@ ascii_taxi = ("""
         #@@@@@@@@@@@                                                           &@@@@@@@@@@%        
         ,@@@@@@@@@@&                                                           (@@@@@@@@@@,        
                                                                                                    """)
+
 
 
