@@ -11,7 +11,7 @@ accuracy = 0.00
 enemy = {
     "name": "Octavio",
     "hp": 100,
-    "rounds": 6,
+    "rounds": 1,
     "accuracy": 1.00
 }
 
@@ -21,7 +21,6 @@ def combat(rounds1, health_points1, player_steps):
     rounds = rounds1
     global health_points
     health_points = health_points1
-    player_steps = 50
 
     if player_steps > 50:
         enemy["accuracy"] -= 0.50
