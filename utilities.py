@@ -71,7 +71,7 @@ def print_description(room):
     word_counter = 0
     new_desc = description.split(' ')
     two_words = [False, False]
-    while word_counter < len(new_desc)-1:
+    while word_counter < len(new_desc):
         new_line = ""
         if two_words[1]:
             new_line += "\n"
