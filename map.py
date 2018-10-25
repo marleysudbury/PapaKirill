@@ -15,7 +15,7 @@ characters = {
 
 room_pizzeria = {
     "visited": False,
-    "version": 2,
+    "version": 0,
     "name": "Papa Kirill's",
     "rooms": [
         {
