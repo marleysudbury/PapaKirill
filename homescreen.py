@@ -1,5 +1,7 @@
+from music import msc_intro
 
 def homegame():
+    msc_intro()
     print("""\
     
     
@@ -30,7 +32,5 @@ def homegame():
     """)
     if input() == None:
         homegame()
-    else:
 
-
-
+        

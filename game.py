@@ -11,6 +11,7 @@ import art
 import dancing
 import sfx
 import score
+import homescreen
 
 win_condition = False
 
@@ -444,6 +445,7 @@ def run_win_screen():
 
 # Entry point.
 def main():
+    homescreen.homegame()
     run_tutorial()
     game_running = True
     # Track output from command executions.
