@@ -444,8 +444,6 @@ def run_win_screen():
 
 # Entry point.
 def main():
-    print(str(score.calc_score(12, [0, 0, 0, 0, 0, 0, 0])))
-    return
     run_tutorial()
     game_running = True
     # Track output from command executions.
