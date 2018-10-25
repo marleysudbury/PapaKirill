@@ -16,11 +16,12 @@ enemy = {
 }
 
 
-def combat(rounds1, health_points1, player_steps):
+def combat(r, hp, ps):
     global rounds
-    rounds = rounds1
+    rounds = r
     global health_points
-    health_points = health_points1
+    health_points = hp
+    player_steps = ps
 
     if player_steps > 50:
         enemy["accuracy"] -= 0.50

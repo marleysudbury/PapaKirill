@@ -9,13 +9,13 @@ characters = {
     },
     "killer": {
         "name": "Octavio Ricca",
-        "speech": "Oh, it's you!"
+        "speech": "Ah look, there he is..."
     }
 }
 
 room_pizzeria = {
     "visited": False,
-    "version": 0,
+    "version": 2,
     "name": "Papa Kirill's",
     "rooms": [
         {
@@ -33,7 +33,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
 
             "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
-            "items": [items.item_bullet],
+            "items": [],
 
             "evidence": [evidence.evidence_dough, evidence.evidence_flyer],
 
@@ -55,7 +55,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
         {
             "name": "Papa Kirill's",
 
-            "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform checking out your uncle's cadaver.""",
+            "description": """You come out of the sewers through a secret hatch. In the kitchen is a man in a police uniform wearing bright blue shoes checking out your uncle's cadaver.""",
 
             "exits": {"west": "Car Park and Delivery Station", "east": "Alleyway"},
 
@@ -70,7 +70,7 @@ The Car Park and Delivery Station is west and the Alleyway is east.""",
         {
             "name": "Papa Kirill's",
 
-            "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. He's staring at you as he cleans the barrel of his gun.""",
+            "description": """The fake cop is standing in the kitchen. However he is not wearing his uniform anymore, he is wearing a hat, tight trousers, a jacket and a bow tie with a cigar in his mouth. On his feet are bright blue shoes. He's staring at you as he cleans the barrel of his gun.""",
 
             "exits": {},
 
@@ -151,6 +151,19 @@ room_jazzclub = {
             "evidence": [evidence.evidence_gloves],
 
             "characters": [],
+        },
+        {
+            "name": "Andy's Jazz Club",
+
+            "description": """You are in Andy's Jazz Club. Christine's set has finished. She's drinking by the bar.""",
+
+            "exits": {"north": "Car Park and Delivery Station"},
+
+            "items": [items.item_bullet],
+
+            "evidence": [],
+
+            "characters": [],
         }
     ]
 }
@@ -175,11 +188,7 @@ room_policestation = {
         {
             "name": "Chicago Police Department",
 
-            "description": """You are in the CPD. A lady is at the reception. 
-
-'Hello there,' she said, 'take a seat we'll take care of you soon'.
-
-You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
+            "description": """You are in the CPD. A lady is at the reception. A policeman with blue shoes eyes you suspiciously.""",
 
             "exits": {"north": "Alleyway"},
 
@@ -192,30 +201,11 @@ You see Bob Smith behind a window working on something on his computer. The clos
         {
             "name": "Chicago Police Department",
 
-            "description": """You enter the CPD and the reception lady makes you sit down to wait.
-
-Bob Smith enters the room.""",
+            "description": """You are in the CPD. The counter is empty. Your evidence sits piled up on the counter, you see a care package on the floor.""",
 
             "exits": {"north": "Alleyway"},
 
-            "items": [],
-
-            "evidence": [],
-
-            "characters": [],
-        },
-        {
-            "name": "Chicago Police Department",
-
-            "description": """You are in the CPD. The same lady is at the reception. 
-
-'Hello there,' she said, 'take a seat we'll take care of you soon'.
-
-You see Bob Smith behind a window working on something on his computer. The closer you look at him the more you think that he's playing some sort of FPS because his left hand is pretty still and his right hand moves vigorously across the table.""",
-
-            "exits": {"north": "Alleyway"},
-
-            "items": [],
+            "items": [items.item_bullet],
 
             "evidence": [],
 
@@ -278,7 +268,7 @@ room_alleyway = {
 
             "items": [items.item_bullet],
 
-            "evidence": [evidence.evidence_drunkbody],
+            "evidence": [],
 
             "characters": [],
         },

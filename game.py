@@ -9,6 +9,8 @@ import settings
 import combat
 import art
 import dancing
+import sfx
+import score
 
 win_condition = False
 
@@ -223,7 +225,7 @@ def execute_inspect(evidence_name):
                 player.evidence.append(evidence_item)
                 room_name = player.current_room['rooms'][room_ver]['name']
                 map.pop_room_evidence(evidence_name, room_name)
-                return "Inspect " + evidence_item["name"] + ": " + evidence_item["description"] + "\n"
+                return "Inspecting " + evidence_item["name"] + ": " + evidence_item["description"] + "\n"
 
     return "Inspect: there's nothing to see.\n"
 
@@ -245,7 +247,10 @@ def execute_take(item_id1):
     room_ver = player.current_room["version"]
     item = map.pop_room_item(item_id1, player.current_room["rooms"][room_ver]['name'])
     if item == items.item_bullet:
-        player.rounds += 1
+        if player.rounds < 6:
+            player.rounds += 1
+        else:
+            return "You're already carrying the maximum number of rounds."
     elif item:
         player.inventory.append(item)
     else:
@@ -340,42 +345,108 @@ def render_screen(r, o):
     utilities.clear_console()
     print_room(r)
     if o:
-        print(o)
+        sfx.type_write(o, 50)
+        print('')
 
 
 first_done = True
 
 
-def demo(room_ver):
+def game_director(room_ver):
+    # Chicago Police Department
+
+    # Progress Chicago Police Department when all items are picked up.
+    if room_ver == 0 and player.current_room == map.rooms["Chicago Police Department"] and len(player.current_room["rooms"][room_ver]['items']) == 0:
+        map.rooms["Chicago Police Department"]["version"] = 1
+    # Spawn last round by dropping all evidence in Chicago Police Department.
+    if player.current_room == map.rooms["Chicago Police Department"] and len(player.evidence) == 7:
+        map.rooms["Chicago Police Department"]["version"] = 2
+
+    # Car Park and Delivery Station
+
+    # Progress Car Park and Delivery Station when all evidence is picked up.
     if room_ver == 0 and player.current_room == map.rooms["Car Park and Delivery Station"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Car Park and Delivery Station"]["version"] = 1
+    # Progress Sewers when all evidence is picked up.
     if room_ver == 0 and player.current_room == map.rooms["Sewers"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Sewers"]["version"] = 1
+
+    # Papa Kirill's
+
+    # Progress Papa Kirill's when all evidence is picked up.
     global first_done
     if first_done and room_ver == 0 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Papa Kirill's"]["version"] = 1
         first_done = False
+    # Progress Papa Kirill's when Sewers is visited.
+    if player.current_room == map.rooms["Sewers"]:
+        map.rooms["Papa Kirill's"]["version"] = 2
+    # Progress Papa Kirill's when all characters have been spoken to.
+    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
+        map.rooms["Papa Kirill's"]["version"] = 3
+
+    # Andy's Jazz Club
+
+    # Progress Andy's Jazz Club when all characters have been spoken to.
     if room_ver == 0 and player.current_room == map.rooms["Andy's Jazz Club"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
         map.rooms["Andy's Jazz Club"]["version"] = 1
         map.rooms["Alleyway"]["version"] = 1
+    # Progress Andy's Jazz Club when all characters have been spoken to.
+    if room_ver == 1 and player.current_room == map.rooms["Andy's Jazz Club"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
+        map.rooms["Andy's Jazz Club"]["version"] = 2
+
+    # Alleyway
+
+    # Progress Alleyway when all evidence is picked up.
     if room_ver == 1 and player.current_room == map.rooms["Alleyway"] and len(player.current_room["rooms"][room_ver]['evidence']) == 0:
         map.rooms["Alleyway"]["version"] = 2
-    if player.current_room == map.rooms["Sewers"]:
-        map.rooms["Papa Kirill's"]["version"] = 2
-    if room_ver == 2 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
-        map.rooms["Papa Kirill's"]["version"] = 3
+    # Progress win_condition when Papa Kirill's is complete.
     if room_ver == 3 and player.current_room == map.rooms["Papa Kirill's"] and len(player.current_room["rooms"][room_ver]['characters']) == 0:
         global win_condition
         win_condition = True
 
 
-def game_director(room_ver):
-    demo(room_ver)
+def run_tutorial():
+    # Tutorial.
+    utilities.clear_console()
+    art.ascii('taxi')
+    sfx.type_write("Welcome to Papa Kirill's Pizzeria.", 50)
+    print('')
+    sfx.type_write("Proudly developed by Team 1.", 50)
+    print('')
+    input("> Press any key to continue... ")
+    utilities.clear_console()
+    art.ascii('body')
+    sfx.type_write("Inspect evidence wherever you see it. Evidence is CAPITALISED so that you can see it.", 50)
+    print('')
+    sfx.type_write("Inspecting evidence will yield clues about how to progress, and can help you find more ammunition.", 50)
+    print('')
+    input("> Press any key to continue... ")
+    utilities.clear_console()
+
+
+def run_win_screen():
+    # This is the win screen.
+    sfx.type_write("Ha, try as you might, this is the end.", 50)
+    print('')
+    sfx.type_write("So, 'detective'.. what will it be? FIGHT or DANCE?", 50)
+    print('')
+    choice = input("> ")
+    if choice == "fight":
+        result = combat.combat(player.rounds, player.health_points, player.player_steps)
+        sfx.type_write(result, 50)
+        print('')
+        s = score.calc_score(player.player_steps, player.evidence)
+        sfx.type_write(str(s), 50)
+    else:
+        print(dancing.combat(player.rounds, player.health_points, player.player_steps))
 
 
 # Entry point.
 def main():
-    # Main loop.
+    print(str(score.calc_score(12, [0, 0, 0, 0, 0, 0, 0])))
+    return
+    run_tutorial()
     game_running = True
     # Track output from command executions.
     output = ""
@@ -397,14 +468,7 @@ def main():
         if win_condition:
             game_running = False
 
-    # This is the win screen.
-    print("Ha, try as you might, this is the end.")
-    print("So, 'detective'.. what will it be? FIGHT or DANCE?")
-    choice = input("> ")
-    if choice == "fight":
-        print(combat.combat(player.rounds, player.health_points, player.player_steps))
-    else:
-        print(dancing.combat(player.rounds, player.health_points, player.player_steps))
+    run_win_screen()
 
 
 # Are we being run as a script? If so, run main().
