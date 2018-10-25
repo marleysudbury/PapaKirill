@@ -11,7 +11,7 @@ accuracy = 0.00
 enemy = {
     "name": "Octavio",
     "hp": 100,
-    "rounds": 6,
+    "rounds": 1,
     "accuracy": 1.00
 }
 
@@ -89,7 +89,7 @@ def combat(r, hp, ps):
         You have completed the game but failed. Try again."""
     elif health_points <= 0:
         return """
-        You were killed by Octavio Ricca.
+        Octavio has fatally shot you down.
         You are dying. As you die your vision gets very blurry. 
         Your uncle appears in front of you.
 
@@ -123,7 +123,6 @@ def combat(r, hp, ps):
         You ran out of rounds. Octavio Ricca notices this and approaches,
         before shooting you through the head.
         
-        You were killed by Octavio Ricca.
         You are dying. As you die your vision gets very blurry. 
         Your uncle appears in front of you.
 
