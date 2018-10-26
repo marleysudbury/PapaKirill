@@ -572,7 +572,11 @@ def run_win_screen():
         s = score.calc_score(player.player_steps, player.evidence)
         sfx.type_write(str(s), 50)
     else:
-        print(dancing.combat(player.rounds, player.health_points, player.player_steps))
+        result = dancing.combat(player.rounds, player.health_points, player.player_steps)
+        sfx.type_write(result, 50)
+        print('')
+        s = score.calc_score(player.player_steps, player.evidence)
+        sfx.type_write(str(s), 50)
 
 
 # Entry point.
