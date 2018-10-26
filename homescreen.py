@@ -1,6 +1,7 @@
 from music import msc_intro
 import utilities
 
+
 def homegame():
     msc_intro()
     print("""\
