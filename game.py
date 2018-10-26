@@ -406,23 +406,155 @@ def game_director(room_ver):
         global win_condition
         win_condition = True
 
+def nextpage():
+    input("""
+Next Page """)
+
+def nexclear():
+    nextpage()
+    utilities.clear_console()
+
+
+def run_introscript():
+    print("Type: 'skip intro' to skip intro or press ENTER to go through intro")
+    imp = str(input("Enter what you want to do: "))
+    if imp == "":
+        utilities.clear_console()
+        art.ascii("detective")
+        sfx.type_write("""\
+Kirill Sidirov was a praised detective who traveled the world tirelessly in the 1950s. His fame came from his atypical ways of tracing the evidence back to the killer and his ebullience on the crime scenes. Kirill rarely took any rest from his job as he got such a thrill from what he did and, as a consequence, he had slowly neglected his family.
+        
+After he had heard that his aunt had died, he knew it was time to take a break and pay a visit to his uncle back in Chicago which was the only family he had left.
+        """, 50)
+        nexclear()
+        art.ascii("piste")
+        nexclear()
+        art.ascii("plane")
+        sfx.type_write("""
+The plane landed at half-past 5 in the evening at Fort Wayne in Indiana. The sunlight was getting dimmer, and it had suddenly started heavily raining so the moment he spotted the Dodge Meadowbrook he swiftly took a seat and gave the cab driver the address. 
+        """, 50)
+        nexclear()
+        art.ascii("taxi2")
+        sfx.type_write("""
+Travelling is tiring, and he wished he could sleep, but he couldn't help but notice that as they secluded themselves from the city, the Interstate 94 was getting bumpier. The Dodge now scrambled it's way across the unevenly paved roads, whizzing past bare trees and open farmland. Taking a nap now seemed unthinkable so, as if in a trance, he was now staring carelessly outside listening to the radio playing Traveling Mama Blues by Joe Calicott, a song that brought back a myriad of memories from his childhood. As the song played, Kirill started thinking of how delighted his uncle will be to see him after so many years away.  
+        """, 50)
+        nexclear()
+        sfx.type_write("""
+He'd fantasized about the way he'd welcome him. He was hoping that things hadn't changed between them and that he would be received similarly from when he was a boy: a big smile and a freshly made pizza with all of his favorite ingredients.
+        """, 50)
+        art.ascii("boy")
+        nexclear()
+        art.ascii("taxi3")
+        sfx.type_write("""
+As he gazed, he barely noticed that the cab driver was looking at him through the rear-view mirror. He must have been intrigued by his apparent stillness and quickly looked away out of politeness. Kirill turned towards him, and they exchanged a look. To be completely honest Kirill hadn't paid too much attention to the cab driver until then because of the many thoughts that were crossing his mind.
+""", 50)
+        nexclear()
+        sfx.type_write("""
+He took a look at him. He was a senior man with protruding wrinkles encrusted in his square face. He had pushed the little hair he had left back and smelled of Faberge Brut. He wore a cardigan sweater over a white t-shirt and large grey pants. His dapperness contrasted with his large blistered worn-out hands which held tightly to the steering wheel as if the car was an animal that he had to control.
+""", 50)
+        nexclear()
+        art.ascii("radio")
+        sfx.type_write("""
+The radio's volume lowered.
+
+'Sir' said the cab driver, 'excuse me for asking this but I'm curious as to why you suddenly started crying? Are you okay?'
+
+He wasn't even aware that tears had made their way down his face until he'd made that comment. The emotion probably led to it. His question had led to a conversation about their lives, what he did, where he was going...
+
+'What do you think is so special about your uncle, Mr. Sidirov?' Mr. Vidal asked.
+""", 50)
+        nexclear()
+        sfx.type_write("""
+'Amongst the many memories I have of him,' Kirill answered, 'his smile is what stands out most about him. I remember that every time he smiles, the corners of his mouth spread to such an extent that they tickle his ears, his eyes reduce to pearls, and diverging wrinkles appear around them.' 
+""", 50)
+        nexclear()
+        sfx.type_write("""
+As Kirill said this, he smiled. Then his face darkened; he couldn't help but wonder if his uncle would understand his passion for solving murder cases; would he resent him for not paying him visits or would he tolerate the way he became, living from what he loved doing?
+
+Their dialogue came promptly to an end when the car stopped in front of a dark alleyway leading to a very brightly-light restaurant at the end of it. Kirill paid, got out and waved goodbye. 
+""", 50)
+
+        nexclear()
+        art.ascii("building")
+        sfx.type_write("""
+He opened his umbrella and checked the address. He didn’t recognize his surroundings but the number propped on the grey wall in front of him confirmed that this was is where his uncle stays. Quite a bit changed since he was a toddler including two large buildings which stood in front of him. The distance separating these two structures created a narrow alleyway. At the end of this passage was a brightly lit construction. His watch indicated half-past 7, perfect! If his memory was correct his uncle should be in the kitchen right now preparing pizza doughs for the locals who would all come for dinner on Saturdays. He walked on the path, zigzagging around garbage and intoxicated men.
+""", 50)
+        nexclear()
+        sfx.type_write("""
+When he arrived at the end of the alleyway, the restaurant stood right in front of him: PAPA KIRILL’S; each letter glimmered with the same neon lighting from when it was inaugurated thirty years earlier. He walked towards the entrance and opened the door. To his left was where the customers would sit down and enjoy a meal but, to his surprise, the restaurant was empty. He swerved right towards the kitchen and the most appalling thing stood in front of him.
+""", 50)
+        nexclear()
+        art.ascii("body")
+        sfx.type_write("""
+A body was on the floor, his uncle’s body. A puddle of blood surrounded him. Cadavers, Kirill had seen thousands of them in his life as a detective. Yet this was the first time he saw the corpse of someone he cherished. A tear dropped. He started sobbing…
+
+He controlled his feelings and got up. On one of the walls of the kitchen was a list of names and phone numbers attached to them. One of them caught his eye: 
+
+Chicago Police Department: (312) 746-6000 
+
+He took his phone out and attempted to dial the number. It took a few attempts to get it right as his hands were trembling.
+""", 50)
+        nexclear()
+        art.ascii("phone")
+        sfx.type_write("""
+*Telephone Ringing Sound*...
+
+Nothing, no one answered. He dialed the number again.
+
+*Telephone Ringing Sound*...
+
+“Chicago Police Department,” said the police officer, “how can I help you?”
+
+“I’m on 3028 West Armitage Ave, reporting the death of a middle-aged man,” said Kirill in a rush, ”I repeat, I’m on 3028 West Armitage Ave, my uncle’s dead, send someone!’
+
+“Help is on the way,” said the officer in a relaxed voice, “It will take them some time to reach you as they’re having dinner so stay put”.
+""", 50)
+        nexclear()
+        art.ascii("policecar")
+        sfx.type_write("""
+Once they finally arrived Kirill was very aggravated, the police car had parked in the middle of the road and only one man came out of it, taking his sweet time to make his way to the restaurant. He opened the door.
+
+“Hello there, I am Bob Smith from the CPD how can I help you,” said Bob Smith as he showed his badge proudly.
+
+Kirill channeled his energy. Breath in, breath out. He had waited an hour for this guy to show up and he didn’t even know what he was dealing with. He knew police forces were incompetent but this was the worst he had ever seen them be.
+
+“My uncle was murdered,” declared Kirill, “follow me”.
+""", 50)
+        nexclear()
+        art.ascii("body")
+        sfx.type_write("""
+Bob saw the body and scribbled things down on a notepad.
+
+“According to the CPD rule-book,” said Bob Smith, “ in the event that an officer finds a corpse on his own he must report the issue to one of his superiors. I have taken notice of this and will now head back to the…”
+
+“...Are you kidding me?!” exclaimed Kirill, “I’ve waited one hour for you to arrive and this is what you do? Unacceptable! Go ahead, leave this restaurant right now.”
+
+Bob Smith was surprised but completely unfazed by the situation, he walked out and rode his car away.
+""", 50)
+        nexclear()
+        sfx.type_write("""
+Kirill thought to himself that he was the only one that could change anything from now on. Matters were now in his own hands. Not only did he vow to solve this case but he vowed to avenge his uncle’s death.
+""", 50)
+        art.ascii("end")
+        input("""
+CONGRATS! You have read the introduction to this game, go ahead and press ENTER to start the game, good luck!""")
+
 
 def run_tutorial():
     # Tutorial.
     utilities.clear_console()
-    art.ascii('taxi')
     sfx.type_write("Welcome to Papa Kirill's Pizzeria.", 50)
     print('')
     sfx.type_write("Proudly developed by Team 1.", 50)
     print('')
-    input("> Press any key to continue... ")
+    input("Press Any Key")
     utilities.clear_console()
     art.ascii('body')
     sfx.type_write("Inspect evidence wherever you see it. Evidence is CAPITALISED so that you can see it.", 50)
     print('')
     sfx.type_write("Inspecting evidence will yield clues about how to progress, and can help you find more ammunition.", 50)
     print('')
-    input("> Press any key to continue... ")
+    input("Press Any Key")
     utilities.clear_console()
 
 
@@ -446,6 +578,7 @@ def run_win_screen():
 # Entry point.
 def main():
     homescreen.homegame()
+    run_introscript()
     run_tutorial()
     game_running = True
     # Track output from command executions.

@@ -1,4 +1,5 @@
 from music import msc_intro
+import utilities
 
 def homegame():
     msc_intro()
@@ -32,5 +33,7 @@ def homegame():
     """)
     if input() == None:
         homegame()
+    else:
+        utilities.clear_console()
 
         

@@ -5,7 +5,7 @@ import map
 inventory = [items.item_revolver]
 evidence = []
 speech = []
-rounds = 6
+rounds = 0
 health_points = 100
 player_steps = 0
 current_room = map.rooms["Papa Kirill's"]
