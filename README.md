@@ -2,7 +2,7 @@
 This game is officially prize winning :)
 
 ## Computational Thinking Module Project (Team 1)
-Abdullah, Daisy, Dan, Dheer, James, Joe, Marley, William
+Daisy, Dan, Dheer, James, Joe, Marley, William
 
 #### Instructions for running:
 
